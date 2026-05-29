@@ -26,19 +26,19 @@ export default function Contact() {
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>&#x2709;</div>
               <div className={styles.infoLabel}>Email</div>
-              <div className={styles.infoValue}>your@email.com</div>
+              <div className={styles.infoValue}>2286079159@qq.com</div>
             </div>
 
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>&#x1F4F1;</div>
-              <div className={styles.infoLabel}>Social</div>
-              <div className={styles.infoLinks}>
-                <a href="#" className={styles.socialLink}>Instagram</a>
-                <span className={styles.divider}>&bull;</span>
-                <a href="#" className={styles.socialLink}>WeChat</a>
-                <span className={styles.divider}>&bull;</span>
-                <a href="#" className={styles.socialLink}>Xiaohongshu</a>
-              </div>
+              <div className={styles.infoLabel}>WeChat</div>
+              <div className={styles.infoValue}>Xizq532-H</div>
+            </div>
+
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}>&#x1F4D5;</div>
+              <div className={styles.infoLabel}>小红书</div>
+              <div className={styles.infoValue}>9776387705</div>
             </div>
 
             <p className={styles.responseNote}>

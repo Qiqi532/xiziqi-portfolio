@@ -21,7 +21,7 @@ export default function About() {
             <div className={styles.portrait}>
               <img
                 src="/images/self.jpg"
-                alt="Xiziqi"
+                alt="曦熙子柒"
                 className={styles.portraitImg}
               />
             </div>
@@ -29,30 +29,46 @@ export default function About() {
 
           <motion.div className={styles.textCol} {...fadeUp(0.3)}>
             <p className={styles.bio}>
-              Hi, I&rsquo;m <strong>[your name]</strong> — a photographer
-              based in <strong>[your location]</strong>. I believe every image
-              carries a story waiting to be told.
+              Hi, I&rsquo;m <strong>曦熙子柒</strong> — a photographer
+              based in <strong>珠海 SYSU</strong>, originally from 泉州.
             </p>
             <p className={styles.bio}>
-              My lens gravitates toward the quiet poetry of campus life, the
-              vastness of natural landscapes, and the unguarded moments that
-              reveal who we truly are.
+              📔 An SYSU undergrad who can&rsquo;t quite figure out physics — so I
+              tell stories through my lens instead. My work spans{' '}
+              <strong>landscape</strong>, <strong>campus life</strong>, and{' '}
+              <strong>portrait</strong> photography — capturing light, moments, and
+              the poetry in between.
             </p>
             <p className={styles.bio}>
-              When I&rsquo;m not behind the camera, you&rsquo;ll find me
-              [a personal note about your hobbies or interests].
+              ✨ Contracted photographer with{' '}
+              <strong>视觉中国 (VCG)</strong> and{' '}
+              <strong>海丝泉州</strong>. When I&rsquo;m not behind the camera,
+              you&rsquo;ll find me sharing campus life stories and photography
+              travel guides.
             </p>
+
+            <div className={styles.tags}>
+              <span className={styles.tag}>风光</span>
+              <span className={styles.tag}>人文</span>
+              <span className={styles.tag}>人像约拍</span>
+              <span className={styles.tag}>校园摄影</span>
+            </div>
 
             <div className={styles.meta}>
               <div className={styles.metaItem}>
                 <span className={styles.metaIcon}>&#x1F4CD;</span>
                 <span className={styles.metaLabel}>Based in</span>
-                <span className={styles.metaValue}>[your city]</span>
+                <span className={styles.metaValue}>珠海 · SYSU</span>
               </div>
               <div className={styles.metaItem}>
                 <span className={styles.metaIcon}>&#x1F4F7;</span>
-                <span className={styles.metaLabel}>Gear</span>
-                <span className={styles.metaValue}>[your camera / lens]</span>
+                <span className={styles.metaLabel}>Camera</span>
+                <span className={styles.metaValue}>Nikon</span>
+              </div>
+              <div className={styles.metaItem}>
+                <span className={styles.metaIcon}>&#x1F31F;</span>
+                <span className={styles.metaLabel}>Affiliation</span>
+                <span className={styles.metaValue}>视觉中国 · 海丝泉州</span>
               </div>
             </div>
           </motion.div>

@@ -16,7 +16,7 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Placeholder — no backend yet
-    alert('Thanks for your message! This form is currently a placeholder. Reach out directly at your@email.com');
+    alert('Thanks for your message! This form is currently a placeholder. Reach out directly at 2286079159@qq.com');
   };
 
   return (
