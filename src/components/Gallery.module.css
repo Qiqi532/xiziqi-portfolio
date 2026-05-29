@@ -1,0 +1,116 @@
+.filterBar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--color-charcoal);
+  background: var(--color-sand);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filterBtn:hover {
+  background: var(--color-forest-light);
+  color: var(--color-cream);
+}
+
+.filterActive {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+/* === Feature Row === */
+.featureRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.featureMain {
+  min-height: 300px;
+}
+
+.featureSide {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* === Image button === */
+.imageBtn {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(45, 90, 39, 0.6) 0%,
+    transparent 50%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageBtn:hover .imageOverlay {
+  opacity: 1;
+}
+
+.imageTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: white;
+}
+
+.imageCat {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* === Grid === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .featureRow {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

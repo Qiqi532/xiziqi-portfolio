@@ -1,0 +1,137 @@
+/* === Hero === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 40px) 24px 60px;
+  overflow: hidden;
+}
+
+.heroContent {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.heroTitle {
+  margin-bottom: 8px;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-forest-light);
+  letter-spacing: 2px;
+  text-transform: lowercase;
+}
+
+/* === Hero image strip === */
+.heroStrip {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.heroImageWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.heroImageWrap:first-child {
+  flex: 1.5;
+}
+
+/* === Scroll hint === */
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-forest-light), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* === Featured === */
+.featured {
+  padding: 80px 0 100px;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.featuredCard {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-4px);
+}
+
+.featuredLink {
+  display: block;
+}
+
+.featuredLabel {
+  padding: 16px 8px 0;
+}
+
+.featuredCategory {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-forest-light);
+}
+
+.featuredTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-forest);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .heroStrip {
+    flex-wrap: wrap;
+  }
+
+  .heroImageWrap {
+    flex: 0 0 calc(50% - 3px) !important;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

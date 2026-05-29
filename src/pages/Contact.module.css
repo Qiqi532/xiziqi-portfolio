@@ -1,0 +1,106 @@
+.page {
+  padding-top: calc(var(--nav-height) + 60px);
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.header h2 {
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #888;
+  font-weight: 300;
+  margin-top: 16px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.content {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.infoCol {
+  flex: 0 0 320px;
+}
+
+.formCol {
+  flex: 1;
+}
+
+.infoCard {
+  background: var(--color-sand);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.infoIcon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.infoLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-forest-light);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.infoValue {
+  font-size: 1rem;
+  color: var(--color-charcoal);
+}
+
+.infoLinks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.socialLink {
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--color-forest);
+}
+
+.divider {
+  color: #ccc;
+  font-size: 0.7rem;
+}
+
+.responseNote {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .infoCol {
+    flex: none;
+    width: 100%;
+  }
+}
