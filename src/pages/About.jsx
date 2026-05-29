@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ContactForm from '../components/ContactForm';
 import styles from './About.module.css';
 
 const fadeUp = (delay = 0) => ({
@@ -11,6 +12,7 @@ export default function About() {
   return (
     <div className={styles.page}>
       <div className="container">
+        {/* ── About Section ── */}
         <motion.div className={styles.header} {...fadeUp(0)}>
           <h2>About Xiziqi</h2>
           <hr className="section-divider" />
@@ -71,6 +73,72 @@ export default function About() {
                 <span className={styles.metaValue}>视觉中国 · 海丝泉州</span>
               </div>
             </div>
+          </motion.div>
+        </div>
+
+        {/* ── Divider ── */}
+        <motion.div
+          className={styles.sectionDivider}
+          initial={{ opacity: 0, scaleX: 0.8 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        />
+
+        {/* ── Contact Section ── */}
+        <motion.div
+          className={styles.contactHeader}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2>Get in Touch</h2>
+          <hr className="section-divider" />
+          <p className={styles.contactSubtitle}>
+            Interested in a shoot? Have a collaboration idea? Drop me a message.
+          </p>
+        </motion.div>
+
+        <div className={styles.contactContent}>
+          <motion.div
+            className={styles.infoCol}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}>&#x2709;</div>
+              <div className={styles.infoLabel}>Email</div>
+              <div className={styles.infoValue}>2286079159@qq.com</div>
+            </div>
+
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}>&#x1F4F1;</div>
+              <div className={styles.infoLabel}>WeChat</div>
+              <div className={styles.infoValue}>Xizq532-H</div>
+            </div>
+
+            <div className={styles.infoCard}>
+              <div className={styles.infoIcon}>&#x1F4D5;</div>
+              <div className={styles.infoLabel}>小红书</div>
+              <div className={styles.infoValue}>9776387705</div>
+            </div>
+
+            <p className={styles.responseNote}>
+              I typically respond within 24 hours.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className={styles.formCol}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <ContactForm />
           </motion.div>
         </div>
       </div>

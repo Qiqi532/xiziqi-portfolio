@@ -28,12 +28,9 @@ const landscapeFiles = [
 ];
 
 const portraitFiles = [
-  'DSC_3913.jpg',
   'DSC_39211.jpg',
   'DSC_4010.jpg',
-  'DSC_4377-已增强-NR.jpg',
   'DSC_4743.jpg',
-  'b1 拷贝.jpg',
   'b1-拷贝.jpg',
   'lzy.jpg',
   'lzy2.jpg',
@@ -42,13 +39,20 @@ const portraitFiles = [
   '中珠音乐厅旁.jpg',
 ];
 
+const categoryNames = {
+  campus: '校园',
+  landscape: '风光',
+  portrait: '人像',
+};
+
 function makeImages(files, category, startId) {
+  const label = categoryNames[category] || category;
   return files.map((file, i) => ({
     id: startId + i,
     src: `${base}/${category}/${encodeURIComponent(file)}`,
     thumb: `${base}/${category}/${encodeURIComponent(file)}`,
     category,
-    title: file.replace(/\.[^.]+$/, '').trim(),
+    title: `${label} · ${String(i + 1).padStart(2, '0')}`,
     aspect: 'landscape',
   }));
 }

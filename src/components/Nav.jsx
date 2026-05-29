@@ -6,7 +6,6 @@ import styles from './Nav.module.css';
 const links = [
   { path: '/portfolio', label: 'Work' },
   { path: '/about', label: 'About' },
-  { path: '/contact', label: 'Contact' },
 ];
 
 export default function Nav() {

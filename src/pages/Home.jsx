@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import LazyImage from '../components/LazyImage';
 import { images, categories } from '../data/images';
 import styles from './Home.module.css';
@@ -15,32 +16,71 @@ const featuredImages = featuredCategories.map(cat =>
   images.find(img => img.category === cat.key)
 ).filter(Boolean);
 
+const heroPhotos = images
+  .filter(img => img.category === 'landscape' || img.category === 'campus');
+
 export default function Home() {
+  const [heroIdx, setHeroIdx] = useState(0);
+
+  const nextHero = useCallback(() => {
+    setHeroIdx(prev => (prev + 1) % heroPhotos.length);
+  }, []);
+
+  useEffect(() => {
+    if (heroPhotos.length === 0) return;
+    const timer = setInterval(nextHero, 6000);
+    return () => clearInterval(timer);
+  }, [nextHero]);
+
+  const heroImg = heroPhotos[heroIdx];
+
   return (
     <>
-      {/* Hero */}
       <section className={styles.hero}>
-        <motion.div className={styles.heroContent} {...fadeUp(0.2)}>
-          <h1 className={styles.heroTitle}>Through my lens</h1>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={heroImg?.id || 'fallback'}
+            className={styles.heroBg}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {heroImg && (
+              <img
+                src={heroImg.src}
+                alt={heroImg.title}
+                className={styles.heroBgImg}
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        <div className={styles.heroOverlay} />
+
+        <motion.div className={styles.heroContent} {...fadeUp(0.3)}>
+          <h1 className={styles.heroTitle}>Xiziqi</h1>
           <p className={styles.heroSubtitle}>
-            stories from campus, nature &amp; the human spirit
+            landscape &middot; campus &middot; portrait
           </p>
+          <Link to="/portfolio" className={styles.heroCta}>
+            View Portfolio
+          </Link>
         </motion.div>
 
         <motion.div
-          className={styles.heroStrip}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          className={styles.heroDots}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
         >
-          {images.slice(0, 4).map(img => (
-            <div key={img.id} className={styles.heroImageWrap}>
-              <LazyImage
-                src={img.thumb}
-                alt={img.title}
-                aspectRatio={img.aspect === 'portrait' ? '4/5' : '16/9'}
-              />
-            </div>
+          {heroPhotos.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.heroDot} ${i === heroIdx ? styles.heroDotActive : ''}`}
+              onClick={() => setHeroIdx(i)}
+              aria-label={`Photo ${i + 1}`}
+            />
           ))}
         </motion.div>
 
@@ -55,7 +95,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Featured Picks */}
       <section className={styles.featured}>
         <div className="container">
           <motion.h2
