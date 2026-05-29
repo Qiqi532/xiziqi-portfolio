@@ -19,10 +19,11 @@ export default function About() {
         <div className={styles.content}>
           <motion.div className={styles.photoCol} {...fadeUp(0.2)}>
             <div className={styles.portrait}>
-              {/* Placeholder — replace with your portrait */}
-              <div className={styles.portraitPlaceholder}>
-                <span>Your<br/>Portrait</span>
-              </div>
+              <img
+                src="/images/self.jpg"
+                alt="Xiziqi"
+                className={styles.portraitImg}
+              />
             </div>
           </motion.div>
 
