@@ -20,7 +20,7 @@ export default function About() {
           <motion.div className={styles.photoCol} {...fadeUp(0.2)}>
             <div className={styles.portrait}>
               <img
-                src="/images/self.jpg"
+                src={`${import.meta.env.BASE_URL}images/self.jpg`}
                 alt="曦熙子柒"
                 className={styles.portraitImg}
               />

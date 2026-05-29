@@ -1,7 +1,7 @@
 // Xiziqi's photography portfolio — actual photo collection
 // Photos stored in public/images/campus/, landscape/, portrait/
 
-const base = '/images';
+const base = `${import.meta.env.BASE_URL}images`;
 
 const campusFiles = [
   '20241006-DSC_4473.jpg',
