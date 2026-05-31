@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ContactForm from '../components/ContactForm';
+import Guestbook from '../components/Guestbook';
 import styles from './About.module.css';
 
 const fadeUp = (delay = 0) => ({
@@ -85,7 +85,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
         />
 
-        {/* ── Contact Section ── */}
+        {/* ── Guestbook Section ── */}
         <motion.div
           className={styles.contactHeader}
           initial={{ opacity: 0, y: 20 }}
@@ -93,10 +93,10 @@ export default function About() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2>Get in Touch</h2>
+          <h2>Guestbook</h2>
           <hr className="section-divider" />
           <p className={styles.contactSubtitle}>
-            Interested in a shoot? Have a collaboration idea? Drop me a message.
+            Leave a message — share your thoughts, say hello, or just leave a mark.
           </p>
         </motion.div>
 
@@ -138,7 +138,7 @@ export default function About() {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
-            <ContactForm />
+            <Guestbook />
           </motion.div>
         </div>
       </div>

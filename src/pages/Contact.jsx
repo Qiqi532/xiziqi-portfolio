@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ContactForm from '../components/ContactForm';
+
 import styles from './Contact.module.css';
 
 const fadeUp = (delay = 0) => ({
@@ -44,10 +44,6 @@ export default function Contact() {
             <p className={styles.responseNote}>
               I typically respond within 24 hours.
             </p>
-          </motion.div>
-
-          <motion.div className={styles.formCol} {...fadeUp(0.3)}>
-            <ContactForm />
           </motion.div>
         </div>
       </div>
