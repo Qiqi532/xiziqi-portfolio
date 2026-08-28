@@ -1,6 +1,6 @@
 # Personal Photo Refresh Design
 
-**Date:** 2026-08-28  
+**Date:** 2026-08-28
 **Status:** Approved for specification review
 
 ## Goal
@@ -45,4 +45,3 @@ Refresh the homepage lifestyle carousel with five landscape photographs and add 
 - Run the full Vitest suite and Vite production build.
 - Visually check homepage desktop/mobile framing and the personal-photo filter/gallery.
 - Deploy to GitHub Pages and verify the current JS/CSS bundle plus representative Shanghai, Beijing, Hong Kong, and Disney assets online.
-
