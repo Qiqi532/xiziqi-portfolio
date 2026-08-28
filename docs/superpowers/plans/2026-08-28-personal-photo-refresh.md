@@ -183,7 +183,6 @@ Add to `src/data/images.js` after `portraitFiles`:
 
 ```js
 const personalPhotos = [
-  { file: '15-disney.jpg', title: '迪士尼旅途', aspect: 'landscape' },
   { file: '03-photonics-conference.jpg', title: '光电会议', aspect: 'landscape' },
   { file: '08-nanjing.jpg', title: '南京夜色', aspect: 'landscape' },
   { file: '05-national-games.jpg', title: '全运会现场', aspect: 'landscape' },
@@ -193,6 +192,7 @@ const personalPhotos = [
   { file: '04-national-games.jpg', title: '志愿服务', aspect: 'portrait' },
   { file: '11-basketball.jpg', title: '篮球赛场', aspect: 'portrait' },
   { file: '14-hong-kong.jpg', title: '香港街头', aspect: 'portrait' },
+  { file: '15-disney.jpg', title: '迪士尼旅途', aspect: 'portrait' },
 ];
 ```
 

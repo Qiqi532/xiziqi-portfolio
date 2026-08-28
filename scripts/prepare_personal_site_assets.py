@@ -47,10 +47,11 @@ def extract_ppt_media(source: Path, media_name: str, destination: Path) -> None:
 
 
 HERO_IMAGES = {
+    "上海.jpg": "hero-shanghai.jpg",
     "泉州.jpg": "hero-quanzhou.jpg",
-    "香港.jpg": "hero-hong-kong.jpg",
-    "长城.jpg": "hero-great-wall.jpg",
     "杭州.jpg": "hero-hangzhou.jpg",
+    "长城.jpg": "hero-great-wall.jpg",
+    "北京.jpg": "hero-beijing.jpg",
 }
 
 GALLERY_IMAGES = {
@@ -68,6 +69,7 @@ GALLERY_IMAGES = {
     "证件照.jpg": "gallery/12-id-photo.jpg",
     "长城.jpg": "gallery/13-great-wall.jpg",
     "香港.jpg": "gallery/14-hong-kong.jpg",
+    "迪士尼.jpg": "gallery/15-disney.jpg",
 }
 
 for source_name, destination_name in HERO_IMAGES.items():
