@@ -7,4 +7,5 @@ it('keeps Chinese photography filters', () => {
   expect(screen.getByRole('button', { name: '校园' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: '风光' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: '人像' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: '个人照' })).toBeInTheDocument();
 });

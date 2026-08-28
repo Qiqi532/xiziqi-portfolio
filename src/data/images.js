@@ -39,10 +39,24 @@ const portraitFiles = [
   '中珠音乐厅旁.jpg',
 ];
 
+const personalPhotos = [
+  { file: '03-photonics-conference.jpg', title: '光电会议', aspect: 'landscape' },
+  { file: '08-nanjing.jpg', title: '南京夜色', aspect: 'landscape' },
+  { file: '05-national-games.jpg', title: '全运会现场', aspect: 'landscape' },
+  { file: '06-national-games.jpg', title: '志愿者合影', aspect: 'landscape' },
+  { file: '10-fieldwork.jpg', title: '田野记录', aspect: 'landscape' },
+  { file: '01-coast.jpg', title: '海边日落', aspect: 'portrait' },
+  { file: '04-national-games.jpg', title: '志愿服务', aspect: 'portrait' },
+  { file: '11-basketball.jpg', title: '篮球赛场', aspect: 'portrait' },
+  { file: '14-hong-kong.jpg', title: '香港街头', aspect: 'portrait' },
+  { file: '15-disney.jpg', title: '迪士尼旅途', aspect: 'portrait' },
+];
+
 const categoryNames = {
   campus: '校园',
   landscape: '风光',
   portrait: '人像',
+  personal: '个人照',
 };
 
 function makeImages(files, category, startId) {
@@ -57,10 +71,22 @@ function makeImages(files, category, startId) {
   }));
 }
 
+function makePersonalImages(photos, startId) {
+  return photos.map(({ file, title, aspect }, index) => ({
+    id: startId + index,
+    src: `${base}/profile/gallery/${file}`,
+    thumb: `${base}/profile/gallery/${file}`,
+    category: 'personal',
+    title,
+    aspect,
+  }));
+}
+
 export const images = [
   ...makeImages(campusFiles, 'campus', 1),
   ...makeImages(landscapeFiles, 'landscape', 100),
   ...makeImages(portraitFiles, 'portrait', 200),
+  ...makePersonalImages(personalPhotos, 300),
 ];
 
 export const categories = [
@@ -68,4 +94,5 @@ export const categories = [
   { key: 'campus', label: '校园' },
   { key: 'landscape', label: '风光' },
   { key: 'portrait', label: '人像' },
+  { key: 'personal', label: '个人照' },
 ];
