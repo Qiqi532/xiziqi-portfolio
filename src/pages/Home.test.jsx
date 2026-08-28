@@ -5,7 +5,7 @@ import Home from './Home';
 it('renders the long-form personal homepage entry points', () => {
   render(<MemoryRouter><Home /></MemoryRouter>);
   expect(screen.getByRole('heading', { name: /在公式与光影之间/ })).toBeInTheDocument();
-  expect(screen.getByRole('img', { name: /泉州/ })).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: /上海/ })).toBeInTheDocument();
   expect(screen.queryByText('01 / PORTRAIT')).not.toBeInTheDocument();
   expect(screen.queryByRole('heading', { name: '研究之外的个人切面' })).not.toBeInTheDocument();
   expect(screen.getByRole('link', { name: /进入研究学习页/ })).toHaveAttribute('href', '/research');

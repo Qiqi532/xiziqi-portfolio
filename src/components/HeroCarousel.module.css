@@ -33,6 +33,7 @@
 .controls {
   position: absolute;
   inset: auto 0 0;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
