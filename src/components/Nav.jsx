@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Nav.module.css';
 
 const links = [
-  { path: '/portfolio', label: 'Work' },
-  { path: '/about', label: 'About' },
+  { path: '/', label: '主页' },
+  { path: '/research', label: '研究学习' },
+  { path: '/practice', label: '个人实践' },
+  { path: '/portfolio', label: '摄影' },
+  { path: '/about', label: '关于' },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -21,20 +23,16 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const navBg = isHome && !scrolled && !menuOpen
-    ? 'transparent'
-    : 'var(--color-cream)';
+  const navBg = scrolled || menuOpen ? 'rgba(248, 250, 251, 0.94)' : 'rgba(248, 250, 251, 0.82)';
 
   return (
     <>
@@ -44,10 +42,9 @@ export default function Nav() {
       >
         <div className={styles.inner}>
           <Link to="/" className={styles.brand}>
-            xiziqi
+            黄新宏
           </Link>
 
-          {/* Desktop links */}
           <div className={styles.desktopLinks}>
             {links.map(({ path, label }) => (
               <Link
@@ -60,11 +57,10 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Hamburger */}
           <button
             className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
             onClick={() => setMenuOpen(prev => !prev)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
           >
             <span />
             <span />
@@ -72,7 +68,6 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

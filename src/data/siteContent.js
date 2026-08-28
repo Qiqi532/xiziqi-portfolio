@@ -10,14 +10,13 @@ export const profile = {
   statement: '在公式与光影之间，持续探索。',
   introduction: '关注光纤传感、天文光谱与机器学习，也持续参与校园传播、志愿服务和摄影创作。',
   email: 'huangxh89@mail2.sysu.edu.cn',
-  heroImage: { src: profileImage('hero-portrait.jpg'), alt: '黄新宏的正面肖像' },
 };
 
 export const heroSlides = [
-  { src: profileImage('hero-quanzhou.jpg'), alt: '黄新宏在泉州湖边', location: '泉州', position: '50% 42%' },
-  { src: profileImage('hero-hong-kong.jpg'), alt: '黄新宏在香港街头', location: '香港', position: '50% 38%' },
-  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: '50% 38%' },
-  { src: profileImage('hero-hangzhou.jpg'), alt: '黄新宏在杭州旅行', location: '杭州', position: '50% 46%' },
+  { src: profileImage('hero-quanzhou.jpg'), alt: '黄新宏在泉州湖边', location: '泉州', position: '50% 42%', fit: 'cover' },
+  { src: profileImage('hero-hong-kong.jpg'), alt: '黄新宏在香港街头', location: '香港', position: '50% 38%', fit: 'contain' },
+  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: '50% 38%', fit: 'cover' },
+  { src: profileImage('hero-hangzhou.jpg'), alt: '黄新宏在杭州旅行', location: '杭州', position: '50% 46%', fit: 'cover' },
 ];
 
 export const researchProjects = [
@@ -86,7 +85,6 @@ export const skillGroups = [
   { label: '学术写作', items: ['LaTeX', 'Microsoft Office'] },
   { label: '视觉创作', items: ['Adobe 系列'] },
 ];
-export const skills = skillGroups.flatMap(({ items }) => items);
 
 export const practiceChapters = [
   {
@@ -114,7 +112,6 @@ export const practiceChapters = [
     links: [],
   },
 ];
-export const practiceHighlights = practiceChapters.map(({ label, title, summary }) => ({ label, title, summary }));
 
 export const selectedPhotography = [
   { key: 'campus', category: '校园', title: '校园日常', href: '/portfolio?category=campus' },
@@ -137,12 +134,6 @@ export const personalGallery = [
   { src: profileImage('gallery/12-id-photo.jpg'), alt: '黄新宏证件照', ratio: 'portrait', span: 'standard', position: '50% 20%' },
   { src: profileImage('gallery/13-great-wall.jpg'), alt: '黄新宏在长城旅行', ratio: 'landscape', span: 'wide', position: '50% 42%' },
   { src: profileImage('gallery/14-hong-kong.jpg'), alt: '黄新宏在香港街头', ratio: 'portrait', span: 'tall', position: '50% 38%' },
-];
-
-export const personalMoments = [
-  { ...personalGallery[10], title: '球场', note: '在团队与节奏中保持专注。' },
-  { ...personalGallery[12], title: '远行', note: '用脚步理解地图之外的尺度。' },
-  { ...personalGallery[0], title: '海边', note: '把观察留给光线，也留给自己。' },
 ];
 
 export const contactChannels = {

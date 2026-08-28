@@ -64,8 +64,8 @@ export const images = [
 ];
 
 export const categories = [
-  { key: 'all', label: 'All' },
-  { key: 'campus', label: 'Campus' },
-  { key: 'landscape', label: 'Landscape' },
-  { key: 'portrait', label: 'Portrait' },
+  { key: 'all', label: '全部' },
+  { key: 'campus', label: '校园' },
+  { key: 'landscape', label: '风光' },
+  { key: 'portrait', label: '人像' },
 ];

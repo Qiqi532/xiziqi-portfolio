@@ -12,19 +12,19 @@
   font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.5px;
-  color: var(--color-charcoal);
-  background: var(--color-sand);
+  color: var(--color-text);
+  background: var(--color-fog);
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .filterBtn:hover {
-  background: var(--color-forest-light);
-  color: var(--color-cream);
+  background: var(--color-accent);
+  color: var(--color-paper);
 }
 
 .filterActive {
-  background: var(--color-forest);
-  color: var(--color-cream);
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
 /* === Feature Row === */

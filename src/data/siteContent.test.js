@@ -16,6 +16,7 @@ describe('public homepage content', () => {
   it('keeps public-safe profile fields and the photography navigation', () => {
     expect(profile).not.toHaveProperty('phone');
     expect(profile).not.toHaveProperty('wechat');
+    expect(profile).not.toHaveProperty('heroImage');
     expect(JSON.stringify(profile)).not.toMatch(/38\/131|3\.7[35]/);
     expect(selectedPhotography).toHaveLength(3);
   });

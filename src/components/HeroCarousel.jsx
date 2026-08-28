@@ -64,6 +64,7 @@ export default function HeroCarousel({ slides }) {
         <img
           src={current.src}
           alt={current.alt}
+          className={current.fit === 'contain' ? styles.contain : styles.cover}
           style={{ objectPosition: current.position }}
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchPriority={index === 0 ? 'high' : 'auto'}

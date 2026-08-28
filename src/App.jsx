@@ -3,9 +3,10 @@ import { AnimatePresence } from 'framer-motion';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Research from './pages/Research';
+import Practice from './pages/Practice';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
-import Contact from './pages/Contact';
 
 export default function App() {
   const location = useLocation();
@@ -14,10 +15,12 @@ export default function App() {
     <>
       <div className="grain-overlay" />
       <Nav />
-      <main>
+      <main style={{ overflowX: 'hidden' }}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/practice" element={<Practice />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Navigate to="/about" replace />} />

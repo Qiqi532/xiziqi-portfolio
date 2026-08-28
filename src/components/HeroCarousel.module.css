@@ -1,6 +1,6 @@
 .frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 4;
   overflow: hidden;
   margin: 0;
   background: var(--color-fog);
@@ -12,8 +12,14 @@
   height: 100%;
 }
 
-.frame > img {
+.cover {
   object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+  padding: 18px;
+  background: linear-gradient(145deg, #d7e1e5, var(--color-fog));
 }
 
 .fallback {

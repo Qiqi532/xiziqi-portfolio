@@ -17,10 +17,10 @@ export default function Portfolio() {
     <div className={styles.page}>
       <div className="container">
         <motion.div className={styles.header} {...fadeUp}>
-          <h2>Portfolio</h2>
+          <h1>摄影</h1>
           <hr className="section-divider" />
           <p className={styles.subtitle}>
-            A selection of work across campus, landscape, and portrait photography
+            在校园、城市与旅途中，记录光线和人与空间的关系。
           </p>
         </motion.div>
 

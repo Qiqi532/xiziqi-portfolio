@@ -25,7 +25,7 @@ export default function ContactLinks({ email, light = false }) {
       </div>
       <p>
         小红书号：<span className={styles.handle}>{xiaohongshu.handle}</span>
-        {feedback ? <span className={styles.feedback} aria-live="polite">{feedback}</span> : null}
+        <span className={styles.feedback} aria-live="polite">{feedback}</span>
       </p>
     </div>
   );
