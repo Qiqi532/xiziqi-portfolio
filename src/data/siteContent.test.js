@@ -22,7 +22,15 @@ describe('public homepage content', () => {
   });
 
   it('contains the approved homepage and personal gallery images', () => {
-    expect(heroSlides.map(({ location }) => location)).toEqual(['泉州', '香港', '长城', '杭州']);
+    expect(heroSlides.map(({ location }) => location)).toEqual([
+      '上海',
+      '泉州',
+      '杭州',
+      '长城',
+      '北京',
+    ]);
+    expect(heroSlides.every(({ fit }) => fit === 'cover')).toBe(true);
+    expect(heroSlides.some(({ location }) => location === '香港')).toBe(false);
     expect(heroSlides.every(({ src }) => !src.includes('id-photo'))).toBe(true);
     expect(personalGallery).toHaveLength(14);
 

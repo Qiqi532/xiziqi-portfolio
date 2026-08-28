@@ -13,10 +13,11 @@ export const profile = {
 };
 
 export const heroSlides = [
+  { src: profileImage('hero-shanghai.jpg'), alt: '黄新宏在上海旅行', location: '上海', position: '50% 48%', fit: 'cover' },
   { src: profileImage('hero-quanzhou.jpg'), alt: '黄新宏在泉州湖边', location: '泉州', position: '50% 42%', fit: 'cover' },
-  { src: profileImage('hero-hong-kong.jpg'), alt: '黄新宏在香港街头', location: '香港', position: '50% 38%', fit: 'contain' },
-  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: '50% 38%', fit: 'cover' },
   { src: profileImage('hero-hangzhou.jpg'), alt: '黄新宏在杭州旅行', location: '杭州', position: '50% 46%', fit: 'cover' },
+  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: '50% 38%', fit: 'cover' },
+  { src: profileImage('hero-beijing.jpg'), alt: '黄新宏在北京旅行', location: '北京', position: '50% 44%', fit: 'cover' },
 ];
 
 export const researchProjects = [
