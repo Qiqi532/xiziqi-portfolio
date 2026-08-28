@@ -1,146 +1,56 @@
-import { motion } from 'framer-motion';
-import Guestbook from '../components/Guestbook';
+import ContactLinks from '../components/ContactLinks';
+import { personalGallery, profile } from '../data/siteContent';
 import styles from './About.module.css';
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
-});
-
 export default function About() {
+  const [leadPhoto, ...galleryPhotos] = personalGallery;
+
   return (
     <div className={styles.page}>
       <div className="container">
-        {/* ── About Section ── */}
-        <motion.div className={styles.header} {...fadeUp(0)}>
-          <h2>About Xiziqi</h2>
-          <hr className="section-divider" />
-        </motion.div>
+        <header className={styles.header}><span>ABOUT</span><h1>关于</h1></header>
 
-        <div className={styles.content}>
-          <motion.div className={styles.photoCol} {...fadeUp(0.2)}>
-            <div className={styles.portrait}>
-              <img
-                src={`${import.meta.env.BASE_URL}images/self.jpg`}
-                alt="曦熙子柒"
-                className={styles.portraitImg}
-              />
-            </div>
-          </motion.div>
-
-          <motion.div className={styles.textCol} {...fadeUp(0.3)}>
-            <p className={styles.bio}>
-              Hi, I&rsquo;m <strong>曦熙子柒</strong> — a photographer
-              based in <strong>珠海 SYSU</strong>, originally from 泉州.
-            </p>
-            <p className={styles.bio}>
-              📔 An SYSU undergrad who can&rsquo;t quite figure out physics — so I
-              tell stories through my lens instead. My work spans{' '}
-              <strong>landscape</strong>, <strong>campus life</strong>, and{' '}
-              <strong>portrait</strong> photography — capturing light, moments, and
-              the poetry in between.
-            </p>
-            <p className={styles.bio}>
-              ✨ Contracted photographer with{' '}
-              <strong>视觉中国 (VCG)</strong> and{' '}
-              <strong>海丝泉州</strong>. When I&rsquo;m not behind the camera,
-              you&rsquo;ll find me sharing campus life stories and photography
-              travel guides.
-            </p>
-
-            <div className={styles.tags}>
-              <span className={styles.tag}>风光</span>
-              <span className={styles.tag}>人文</span>
-              <span className={styles.tag}>人像约拍</span>
-              <span className={styles.tag}>校园摄影</span>
-            </div>
-
-            <div className={styles.meta}>
-              <div className={styles.metaItem}>
-                <span className={styles.metaIcon}>&#x1F4CD;</span>
-                <span className={styles.metaLabel}>Based in</span>
-                <span className={styles.metaValue}>珠海 · SYSU</span>
-              </div>
-              <div className={styles.metaItem}>
-                <span className={styles.metaIcon}>&#x1F4F7;</span>
-                <span className={styles.metaLabel}>Camera</span>
-                <span className={styles.metaValue}>Nikon</span>
-              </div>
-              <div className={styles.metaItem}>
-                <span className={styles.metaIcon}>&#x1F31F;</span>
-                <span className={styles.metaLabel}>Affiliation</span>
-                <span className={styles.metaValue}>视觉中国 · 海丝泉州</span>
-              </div>
-            </div>
-          </motion.div>
+        <div className={styles.intro}>
+          <figure className={styles.leadPhoto} data-testid="personal-photo">
+            <img
+              src={leadPhoto.src}
+              alt={leadPhoto.alt}
+              data-featured="true"
+              style={{ objectPosition: leadPhoto.position }}
+            />
+          </figure>
+          <div className={styles.biography}>
+            <h2>{profile.name}</h2>
+            <p className={styles.role}>{profile.role}</p>
+            <p>{profile.introduction}</p>
+            <p>我习惯从物理问题中寻找结构，也通过摄影练习对光线、空间与人的观察。这个网站记录正在推进的研究、持续参与的实践，以及沿途留下的影像。</p>
+            <ContactLinks email={profile.email} />
+          </div>
         </div>
 
-        {/* ── Divider ── */}
-        <motion.div
-          className={styles.sectionDivider}
-          initial={{ opacity: 0, scaleX: 0.8 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        />
-
-        {/* ── Guestbook Section ── */}
-        <motion.div
-          className={styles.contactHeader}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2>Guestbook</h2>
-          <hr className="section-divider" />
-          <p className={styles.contactSubtitle}>
-            Leave a message — share your thoughts, say hello, or just leave a mark.
-          </p>
-        </motion.div>
-
-        <div className={styles.contactContent}>
-          <motion.div
-            className={styles.infoCol}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>&#x2709;</div>
-              <div className={styles.infoLabel}>Email</div>
-              <div className={styles.infoValue}>2286079159@qq.com</div>
-            </div>
-
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>&#x1F4F1;</div>
-              <div className={styles.infoLabel}>WeChat</div>
-              <div className={styles.infoValue}>Xizq532-H</div>
-            </div>
-
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>&#x1F4D5;</div>
-              <div className={styles.infoLabel}>小红书</div>
-              <div className={styles.infoValue}>9776387705</div>
-            </div>
-
-            <p className={styles.responseNote}>
-              I typically respond within 24 hours.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className={styles.formCol}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-          >
-            <Guestbook />
-          </motion.div>
-        </div>
+        <section className={styles.gallerySection} aria-labelledby="gallery-title">
+          <div className={styles.galleryHeading}>
+            <span>PERSONAL ARCHIVE · 14 PHOTOS</span>
+            <h2 id="gallery-title">个人切面</h2>
+            <p>旅行、校园、会议、志愿服务与日常片刻。</p>
+          </div>
+          <div className={styles.gallery}>
+            {galleryPhotos.map((photo) => (
+              <figure
+                key={photo.src}
+                className={`${styles.photo} ${styles[photo.span]}`}
+                data-testid="personal-photo"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  style={{ objectPosition: photo.position }}
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
