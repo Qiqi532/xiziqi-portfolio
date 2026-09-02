@@ -22,6 +22,12 @@ const categoryImages = Object.fromEntries(
   ['campus', 'landscape', 'portrait'].map((key) => [key, images.find((item) => item.category === key)]),
 );
 
+const featuredProjects = [
+  researchProjects.find((p) => p.id === 'optical-sensing'),
+  researchProjects.find((p) => p.id === 'physics-research-intelligence'),
+  researchProjects.find((p) => p.id === 'peculiar-stars'),
+].filter(Boolean);
+
 export default function Home() {
   return (
     <>
@@ -29,7 +35,7 @@ export default function Home() {
         <div className={styles.grid} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
-            <span className={styles.index}>SYSU · PHYSICS · PHOTOGRAPHY</span>
+            <span className={styles.index}>SYSU · PHYSICS · RESEARCH & CREATION</span>
             <p className={styles.name}>{profile.name} <small>{profile.englishName}</small></p>
             <h1>{profile.statement}</h1>
             <p className={styles.lead}>{profile.role}。{profile.introduction}</p>
@@ -46,12 +52,16 @@ export default function Home() {
         <div className="container">
           <header className={styles.sectionHeader}><span>01 / RESEARCH</span><h2>用实验与计算理解问题</h2></header>
           <div className={styles.twoCol}>
-            {researchProjects.slice(0, 2).map((project) => (
+            {featuredProjects.map((project) => (
               <motion.article key={project.id} className={styles.record} {...reveal}>
                 <span>{project.label} · {project.status}</span>
                 <h3>{project.title}</h3>
                 <p>{project.summary}</p>
-                <Link to={project.href}>查看项目细节 →</Link>
+                {project.external ? (
+                  <a href={project.href} target="_blank" rel="noreferrer">访问 GitHub 仓库 ↗</a>
+                ) : (
+                  <Link to={project.href}>查看项目细节 →</Link>
+                )}
               </motion.article>
             ))}
           </div>

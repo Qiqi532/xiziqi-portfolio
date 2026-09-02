@@ -73,7 +73,6 @@ export default function HeroCarousel({ slides }) {
       )}
       <div className={styles.controls}>
         <button type="button" aria-label="上一张照片" onClick={() => selectSlide(index - 1)}>←</button>
-        <span>{String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')} · {current.location}</span>
         <button type="button" aria-label="下一张照片" onClick={() => selectSlide(index + 1)}>→</button>
       </div>
       <div className={styles.dots} role="group" aria-label="选择照片">

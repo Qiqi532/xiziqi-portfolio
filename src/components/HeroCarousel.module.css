@@ -1,6 +1,6 @@
 .frame {
   position: relative;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   margin: 0;
   background: var(--color-fog);
@@ -34,19 +34,12 @@
   position: absolute;
   inset: auto 0 0;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
   padding: 12px;
   background: rgba(248, 250, 251, .9);
   color: var(--color-ink);
-}
-
-.controls span {
-  text-align: center;
-  font-size: .68rem;
-  letter-spacing: .12em;
 }
 
 .controls button {
