@@ -8,7 +8,7 @@ export const profile = {
   englishName: 'Xinhong Huang',
   role: '中山大学物理学本科生',
   statement: '在公式与光影之间，持续探索。',
-  introduction: '关注光纤传感、天文光谱与机器学习，也持续参与校园传播、志愿服务和摄影创作。',
+  introduction: '关注光纤传感、天文光谱与机器学习，正在开发面向物理研究的可解释 AI 论文情报平台；同时持续参与校园传播、志愿服务和摄影创作。',
   email: 'huangxh89@mail2.sysu.edu.cn',
 };
 
@@ -44,6 +44,15 @@ export const researchProjects = [
     contribution: '高能物理课程项目',
     media: { src: researchImage('lhc-top-tagging.jpg'), alt: 'LHC 顶夸克标记分类结果示例' },
     href: '/research#lhc-top-tagging',
+  },
+  {
+    id: 'physics-research-intelligence', label: 'R-04', title: 'Physics Research Intelligence', period: '2026.08 — 至今', status: '进行中',
+    summary: '面向个人物理研究的可解释 AI 论文情报平台，聚合公开论文事实，使用可切换大模型完成保守分类与结构化解读，通过确定性、可解释的兴趣评分生成 Today Physics。',
+    details: ['聚合 Crossref、OpenAlex、arXiv 公开论文元数据，建立事实层与 AI 解读层分离的数据架构，模型输出不能覆盖原始事实。', '支持 OpenAI、DeepSeek、Gemini、Qwen、Kimi、智谱 GLM 等多模型切换，完成物理方向分类与带证据等级的中文结构化解读。', '实现 Today Physics 可解释推荐、个人收藏库、阅读状态管理与 BullMQ 每日自动化采集流水线。'],
+    contribution: '项目负责人 · 独立开发 · 单用户 MVP 已本地试运行',
+    media: { src: researchImage('pri-today-physics.jpg'), alt: 'Physics Research Intelligence 平台 Today Physics 首页' },
+    href: 'https://github.com/Qiqi532/Physics-Research-Intelligence',
+    external: true,
   },
 ];
 
@@ -84,6 +93,7 @@ export const skillGroups = [
   { label: '仿真与分析', items: ['COMSOL', 'Origin', '光谱数据处理'] },
   { label: '工程表达', items: ['SolidWorks', 'AutoCAD'] },
   { label: '学术写作', items: ['LaTeX', 'Microsoft Office'] },
+  { label: 'AI 辅助开发', items: ['Codex', 'Claude', 'Vibe Coding'] },
   { label: '视觉创作', items: ['Adobe 系列'] },
 ];
 
@@ -121,25 +131,34 @@ export const selectedPhotography = [
 ];
 
 export const personalGallery = [
-  { src: profileImage('gallery/01-coast.jpg'), alt: '黄新宏在海边观看日落', ratio: 'portrait', span: 'tall', position: '50% 45%' },
-  { src: profileImage('gallery/02-beijing.jpg'), alt: '黄新宏在北京篮球场', ratio: 'landscape', span: 'wide', position: '50% 42%' },
-  { src: profileImage('gallery/03-photonics-conference.jpg'), alt: '黄新宏参加光电会议', ratio: 'landscape', span: 'standard', position: '50% 45%' },
-  { src: profileImage('gallery/04-national-games.jpg'), alt: '黄新宏参加十五运会志愿服务', ratio: 'portrait', span: 'tall', position: '50% 40%' },
-  { src: profileImage('gallery/05-national-games.jpg'), alt: '十五运会志愿服务现场', ratio: 'landscape', span: 'standard', position: '50% 45%' },
-  { src: profileImage('gallery/06-national-games.jpg'), alt: '十五运会志愿者合影', ratio: 'landscape', span: 'standard', position: '50% 50%' },
-  { src: profileImage('gallery/07-hangzhou.jpg'), alt: '黄新宏在杭州旅行', ratio: 'landscape', span: 'wide', position: '50% 48%' },
-  { src: profileImage('gallery/08-nanjing.jpg'), alt: '黄新宏在南京夜景中', ratio: 'landscape', span: 'standard', position: '50% 50%' },
-  { src: profileImage('gallery/09-quanzhou.jpg'), alt: '黄新宏在泉州湖边', ratio: 'landscape', span: 'wide', position: '50% 45%' },
-  { src: profileImage('gallery/10-fieldwork.jpg'), alt: '黄新宏参加三下乡影像记录', ratio: 'landscape', span: 'wide', position: '50% 45%' },
-  { src: profileImage('gallery/11-basketball.jpg'), alt: '黄新宏参加校园篮球赛', ratio: 'portrait', span: 'tall', position: '50% 42%' },
-  { src: profileImage('gallery/12-id-photo.jpg'), alt: '黄新宏证件照', ratio: 'portrait', span: 'standard', position: '50% 20%' },
-  { src: profileImage('gallery/13-great-wall.jpg'), alt: '黄新宏在长城旅行', ratio: 'landscape', span: 'wide', position: '50% 42%' },
-  { src: profileImage('gallery/14-hong-kong.jpg'), alt: '黄新宏在香港街头', ratio: 'portrait', span: 'tall', position: '50% 38%' },
+  { src: profileImage('gallery/15-hong-kong.jpg'), alt: '黄新宏在香港街头', ratio: 'portrait', span: 'tall', position: '50% 45%' },
+  { src: profileImage('gallery/01-fieldwork.jpg'), alt: '黄新宏参加三下乡社会实践影像记录', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/11-meizhou-island.jpg'), alt: '黄新宏在湄洲岛旅行', ratio: 'portrait', span: 'tall', position: '50% 50%' },
+  { src: profileImage('gallery/02-shanghai.jpg'), alt: '黄新宏在上海旅行', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/03-photonics-conference.jpg'), alt: '黄新宏参加光电会议', ratio: 'landscape', span: 'standard', position: '50% 50%' },
+  { src: profileImage('gallery/04-national-games.jpg'), alt: '黄新宏参加十五运会志愿服务', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/12-basketball.jpg'), alt: '黄新宏参加校园篮球赛', ratio: 'portrait', span: 'tall', position: '50% 50%' },
+  { src: profileImage('gallery/05-national-games-2.jpg'), alt: '十五运会志愿服务现场', ratio: 'landscape', span: 'standard', position: '50% 50%' },
+  { src: profileImage('gallery/06-beijing.jpg'), alt: '黄新宏在北京旅行', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/07-nanjing.png'), alt: '黄新宏在南京夜景中', ratio: 'landscape', span: 'standard', position: '50% 50%' },
+  { src: profileImage('gallery/08-national-guard.jpg'), alt: '黄新宏参加国旗护卫队活动', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/09-hangzhou.jpg'), alt: '黄新宏在杭州旅行', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/10-quanzhou.jpg'), alt: '黄新宏在泉州湖边', ratio: 'landscape', span: 'standard', position: '50% 50%' },
+  { src: profileImage('gallery/13-disney.jpg'), alt: '黄新宏在迪士尼旅途', ratio: 'landscape', span: 'standard', position: '50% 50%' },
+  { src: profileImage('gallery/14-great-wall.jpg'), alt: '黄新宏在长城旅行', ratio: 'landscape', span: 'wide', position: '50% 50%' },
+  { src: profileImage('gallery/16-hong-kong-2.jpg'), alt: '黄新宏在香港城市风光', ratio: 'landscape', span: 'standard', position: '50% 50%' },
 ];
 
 export const contactChannels = {
+  github: {
+    label: 'GitHub', handle: 'Qiqi532',
+    href: 'https://github.com/Qiqi532',
+  },
   xiaohongshu: {
     label: '小红书', handle: '9776387705',
     href: 'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818',
+  },
+  wechat: {
+    label: '微信', handle: 'Xizq532-H',
   },
 };

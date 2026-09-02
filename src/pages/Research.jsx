@@ -36,6 +36,11 @@ export default function Research() {
                 <p>{project.summary}</p>
                 <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                 <p className={styles.contribution}>{project.contribution}</p>
+                {project.external && (
+                  <a href={project.href} target="_blank" rel="noreferrer" className={styles.projectLink}>
+                    访问 GitHub 仓库 ↗
+                  </a>
+                )}
               </div>
               <figure className={styles.projectMedia}>
                 <img src={project.media.src} alt={project.media.alt} loading="lazy" />

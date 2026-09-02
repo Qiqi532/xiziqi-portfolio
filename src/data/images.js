@@ -40,16 +40,22 @@ const portraitFiles = [
 ];
 
 const personalPhotos = [
+  { file: '01-fieldwork.jpg', title: '三下乡实践', aspect: 'landscape' },
+  { file: '02-shanghai.jpg', title: '上海旅行', aspect: 'landscape' },
   { file: '03-photonics-conference.jpg', title: '光电会议', aspect: 'landscape' },
-  { file: '08-nanjing.jpg', title: '南京夜色', aspect: 'landscape' },
-  { file: '05-national-games.jpg', title: '全运会现场', aspect: 'landscape' },
-  { file: '06-national-games.jpg', title: '志愿者合影', aspect: 'landscape' },
-  { file: '10-fieldwork.jpg', title: '田野记录', aspect: 'landscape' },
-  { file: '01-coast.jpg', title: '海边日落', aspect: 'portrait' },
-  { file: '04-national-games.jpg', title: '志愿服务', aspect: 'portrait' },
-  { file: '11-basketball.jpg', title: '篮球赛场', aspect: 'portrait' },
-  { file: '14-hong-kong.jpg', title: '香港街头', aspect: 'portrait' },
-  { file: '15-disney.jpg', title: '迪士尼旅途', aspect: 'portrait' },
+  { file: '04-national-games.jpg', title: '全运会志愿服务', aspect: 'landscape' },
+  { file: '05-national-games-2.jpg', title: '全运会现场', aspect: 'landscape' },
+  { file: '06-beijing.jpg', title: '北京旅行', aspect: 'landscape' },
+  { file: '07-nanjing.png', title: '南京夜色', aspect: 'landscape' },
+  { file: '08-national-guard.jpg', title: '国旗护卫队', aspect: 'landscape' },
+  { file: '09-hangzhou.jpg', title: '杭州旅行', aspect: 'landscape' },
+  { file: '10-quanzhou.jpg', title: '泉州湖畔', aspect: 'landscape' },
+  { file: '11-meizhou-island.jpg', title: '湄洲岛旅行', aspect: 'portrait' },
+  { file: '12-basketball.jpg', title: '篮球赛场', aspect: 'portrait' },
+  { file: '13-disney.jpg', title: '迪士尼旅途', aspect: 'landscape' },
+  { file: '14-great-wall.jpg', title: '长城旅行', aspect: 'landscape' },
+  { file: '15-hong-kong.jpg', title: '香港街头', aspect: 'portrait' },
+  { file: '16-hong-kong-2.jpg', title: '香港城市风光', aspect: 'landscape' },
 ];
 
 const categoryNames = {

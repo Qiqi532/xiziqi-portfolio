@@ -12,6 +12,7 @@
 .projectCopy li{position:relative;padding-left:18px}
 .projectCopy li::before{content:'—';position:absolute;left:0;color:var(--color-accent)}
 .contribution{color:var(--color-accent)}
+.projectLink{display:inline-block;margin-top:18px;border-bottom:1px solid var(--color-accent);color:var(--color-ink)}
 .projectMedia{display:grid;place-items:center;min-height:260px;margin:0;padding:24px;background:var(--color-fog)}
 .projectMedia img{width:100%;max-height:360px;object-fit:contain}
 .section{margin-top:100px}
@@ -32,7 +33,7 @@
 .award img{width:100%;height:100%;object-fit:contain}
 .award h3{font-size:1.25rem;margin:8px 0}
 .award p{font-size:.9rem}
-.skillGroups{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--color-line);border-left:1px solid var(--color-line)}
+.skillGroups{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--color-line);border-left:1px solid var(--color-line)}
 .skillGroup{padding:24px 20px;border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
 .skillGroup h3{font-size:1.05rem;margin-bottom:16px}
 .skillGroup ul{display:flex;flex-wrap:wrap;gap:8px}

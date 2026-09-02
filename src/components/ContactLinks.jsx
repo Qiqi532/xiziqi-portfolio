@@ -3,16 +3,16 @@ import { contactChannels } from '../data/siteContent';
 import styles from './ContactLinks.module.css';
 
 export default function ContactLinks({ email, light = false }) {
-  const [feedback, setFeedback] = useState('');
-  const { xiaohongshu } = contactChannels;
+  const [feedback, setFeedback] = useState({});
+  const { github, xiaohongshu, wechat } = contactChannels;
 
-  const copyHandle = async () => {
+  const copyHandle = async (key, value) => {
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText(xiaohongshu.handle);
-      setFeedback('已复制');
+      await navigator.clipboard.writeText(value);
+      setFeedback((prev) => ({ ...prev, [key]: '已复制' }));
     } catch {
-      setFeedback(`请手动复制：${xiaohongshu.handle}`);
+      setFeedback((prev) => ({ ...prev, [key]: `请手动复制：${value}` }));
     }
   };
 
@@ -20,12 +20,19 @@ export default function ContactLinks({ email, light = false }) {
     <div className={`${styles.contact} ${light ? styles.light : ''}`}>
       <div className={styles.links}>
         <a href={`mailto:${email}`}>通过邮箱联系</a>
+        <a href={github.href} target="_blank" rel="noreferrer">访问 GitHub ↗</a>
         <a href={xiaohongshu.href} target="_blank" rel="noreferrer">访问小红书主页 ↗</a>
-        <button type="button" onClick={copyHandle} aria-label="复制小红书号">复制账号</button>
+        <button type="button" onClick={() => copyHandle('wechat', wechat.handle)} aria-label="复制微信号">
+          复制微信号
+        </button>
       </div>
       <p>
+        GitHub：<span className={styles.handle}>{github.handle}</span>
+        <span className={styles.separator}>·</span>
         小红书号：<span className={styles.handle}>{xiaohongshu.handle}</span>
-        <span className={styles.feedback} aria-live="polite">{feedback}</span>
+        <span className={styles.separator}>·</span>
+        微信：<span className={styles.handle}>{wechat.handle}</span>
+        {feedback.wechat && <span className={styles.feedback} aria-live="polite">{feedback.wechat}</span>}
       </p>
     </div>
   );

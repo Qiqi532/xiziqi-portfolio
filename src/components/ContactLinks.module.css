@@ -35,6 +35,11 @@
   color: var(--color-accent);
 }
 
+.separator {
+  margin: 0 10px;
+  color: var(--color-line);
+}
+
 .light,
 .light .handle,
 .light .links a,

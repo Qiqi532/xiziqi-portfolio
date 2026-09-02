@@ -30,7 +30,7 @@ export default function About() {
 
         <section className={styles.gallerySection} aria-labelledby="gallery-title">
           <div className={styles.galleryHeading}>
-            <span>PERSONAL ARCHIVE · 14 PHOTOS</span>
+            <span>PERSONAL ARCHIVE · 16 PHOTOS</span>
             <h2 id="gallery-title">个人切面</h2>
             <p>旅行、校园、会议、志愿服务与日常片刻。</p>
           </div>
