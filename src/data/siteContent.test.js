@@ -32,7 +32,7 @@ describe('public homepage content', () => {
     expect(heroSlides.every(({ fit }) => fit === 'cover')).toBe(true);
     expect(heroSlides.some(({ location }) => location === '香港')).toBe(false);
     expect(heroSlides.every(({ src }) => !src.includes('id-photo'))).toBe(true);
-    expect(personalGallery).toHaveLength(14);
+    expect(personalGallery).toHaveLength(16);
 
     const galleryLayout = personalGallery.map(({ src, ratio, span }) => ({
       file: src.split('/').at(-1),
@@ -41,32 +41,39 @@ describe('public homepage content', () => {
     }));
 
     expect(galleryLayout).toEqual([
-      { file: '01-coast.jpg', ratio: 'portrait', span: 'tall' },
-      { file: '02-beijing.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '15-hong-kong.jpg', ratio: 'portrait', span: 'tall' },
+      { file: '01-fieldwork.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '11-meizhou-island.jpg', ratio: 'portrait', span: 'tall' },
+      { file: '02-shanghai.jpg', ratio: 'landscape', span: 'wide' },
       { file: '03-photonics-conference.jpg', ratio: 'landscape', span: 'standard' },
-      { file: '04-national-games.jpg', ratio: 'portrait', span: 'tall' },
-      { file: '05-national-games.jpg', ratio: 'landscape', span: 'standard' },
-      { file: '06-national-games.jpg', ratio: 'landscape', span: 'standard' },
-      { file: '07-hangzhou.jpg', ratio: 'landscape', span: 'wide' },
-      { file: '08-nanjing.jpg', ratio: 'landscape', span: 'standard' },
-      { file: '09-quanzhou.jpg', ratio: 'landscape', span: 'wide' },
-      { file: '10-fieldwork.jpg', ratio: 'landscape', span: 'wide' },
-      { file: '11-basketball.jpg', ratio: 'portrait', span: 'tall' },
-      { file: '12-id-photo.jpg', ratio: 'portrait', span: 'standard' },
-      { file: '13-great-wall.jpg', ratio: 'landscape', span: 'wide' },
-      { file: '14-hong-kong.jpg', ratio: 'portrait', span: 'tall' },
+      { file: '04-national-games.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '12-basketball.jpg', ratio: 'portrait', span: 'tall' },
+      { file: '05-national-games-2.jpg', ratio: 'landscape', span: 'standard' },
+      { file: '06-beijing.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '07-nanjing.png', ratio: 'landscape', span: 'standard' },
+      { file: '08-national-guard.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '09-hangzhou.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '10-quanzhou.jpg', ratio: 'landscape', span: 'standard' },
+      { file: '13-disney.jpg', ratio: 'landscape', span: 'standard' },
+      { file: '14-great-wall.jpg', ratio: 'landscape', span: 'wide' },
+      { file: '16-hong-kong-2.jpg', ratio: 'landscape', span: 'standard' },
     ]);
 
-    const idPhoto = personalGallery.find(({ src }) => src.endsWith('/12-id-photo.jpg'));
-    expect(idPhoto.featured).not.toBe(true);
+    expect(personalGallery.every(({ featured }) => featured !== true)).toBe(true);
   });
 
   it('contains the approved research, practice, skills, and contact records', () => {
     expect(publications).toHaveLength(2);
     expect(competitions).toHaveLength(3);
     expect(competitions.some(({ title }) => title.includes('实验物理教学研讨会'))).toBe(true);
-    expect(researchProjects).toHaveLength(3);
+    expect(researchProjects).toHaveLength(5);
     expect(researchProjects.some(({ id }) => id === 'lhc-top-tagging')).toBe(true);
+
+    const lumina = researchProjects.find(({ id }) => id === 'lumina-select');
+    expect(lumina).toBeDefined();
+    expect(lumina.href).toBe('https://github.com/Qiqi532/lumina-select');
+    expect(lumina.external).toBe(true);
+
     expect(skillGroups.flatMap(({ items }) => items)).toEqual(
       expect.arrayContaining(['Python', 'PyTorch', 'COMSOL', 'Origin', 'SolidWorks', 'AutoCAD', 'LaTeX', 'Adobe 系列']),
     );

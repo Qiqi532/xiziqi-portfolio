@@ -15,5 +15,5 @@ it('renders the long-form personal homepage entry points', () => {
     'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818',
   );
   expect(screen.getByText('9776387705')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: '复制小红书号' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: '复制微信号' })).toBeInTheDocument();
 });

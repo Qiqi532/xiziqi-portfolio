@@ -54,6 +54,15 @@ export const researchProjects = [
     href: 'https://github.com/Qiqi532/Physics-Research-Intelligence',
     external: true,
   },
+  {
+    id: 'lumina-select', label: 'R-05', title: 'Lumina Select · 光影选片助手', period: '2026.09 — 至今', status: '进行中',
+    summary: '本地 AI 智能选片工具：废片剔除 → 相似分组 → 场景自适应评分 → 最佳帧推荐 → 不确定甄选，一键导出保留片；照片全程本地处理、不上传，PyQt6 桌面原生界面，算法核心纯 Python。',
+    details: ['基于 PyTorch/OpenCLIP/MUSIQ/MediaPipe 构建多级质量与美学评估链：模糊、过曝/欠曝、闭眼、高度重复照片自动判废。', 'EXIF 连拍分组 + pHash 感知哈希聚类相似照片，场景自适应权重评分并推荐组内最佳帧；组内分差过小时进入 A/B/C/D 人工甄选。', 'SQLite(WAL) 索引 + 断点续跑 + 分块流式内存控制，1000 张全流程实测 61 秒（验收 ≤5 分钟）；pytest 单元测试 + 端到端冒烟，PyInstaller/Inno Setup 打包分发。'],
+    contribution: '独立开发 · Apache-2.0 开源',
+    media: { src: researchImage('lumina-select.jpg'), alt: 'Lumina Select 光影选片助手人工复核界面' },
+    href: 'https://github.com/Qiqi532/lumina-select',
+    external: true,
+  },
 ];
 
 export const publications = [

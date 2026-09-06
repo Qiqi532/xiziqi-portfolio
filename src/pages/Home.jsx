@@ -25,6 +25,7 @@ const categoryImages = Object.fromEntries(
 const featuredProjects = [
   researchProjects.find((p) => p.id === 'optical-sensing'),
   researchProjects.find((p) => p.id === 'physics-research-intelligence'),
+  researchProjects.find((p) => p.id === 'lumina-select'),
   researchProjects.find((p) => p.id === 'peculiar-stars'),
 ].filter(Boolean);
 

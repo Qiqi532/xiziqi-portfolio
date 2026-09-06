@@ -6,9 +6,9 @@ describe('photography portfolio data', () => {
     expect(categories).toContainEqual({ key: 'personal', label: '个人照' });
 
     const personalPhotos = images.filter(({ category }) => category === 'personal');
-    expect(personalPhotos).toHaveLength(10);
-    expect(personalPhotos.some(({ src }) => src.includes('14-hong-kong.jpg'))).toBe(true);
-    expect(personalPhotos.some(({ src }) => src.includes('15-disney.jpg'))).toBe(true);
+    expect(personalPhotos).toHaveLength(16);
+    expect(personalPhotos.some(({ src }) => src.includes('15-hong-kong.jpg'))).toBe(true);
+    expect(personalPhotos.some(({ src }) => src.includes('16-hong-kong-2.jpg'))).toBe(true);
     expect(personalPhotos.every(({ src }) => !src.includes('id-photo'))).toBe(true);
   });
 
