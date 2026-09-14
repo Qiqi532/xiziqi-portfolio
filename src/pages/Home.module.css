@@ -27,6 +27,17 @@
 .practiceGrid article:last-child{border:0}
 .practiceGrid span{margin-bottom:18px}
 .practiceGrid p{margin-top:14px}
+.photoIntro{max-width:720px;margin:0 0 36px;font-size:.98rem}
+.photoIntro p{margin:0 0 10px}
+.photoHighlights{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);margin-bottom:34px}
+.photoHighlight{padding:22px 26px;border-right:1px solid var(--color-line)}
+.photoHighlight:last-child{border:0}
+.photoHighlight strong{display:block;font-family:var(--font-heading);font-weight:500;font-size:1.2rem;color:var(--color-ink)}
+.photoHighlight span{display:block;font-size:.78rem;letter-spacing:.08em;color:var(--color-accent);margin-top:6px}
+.photoSkills{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px}
+.photoSkills>div{display:flex;align-items:baseline;gap:12px}
+.photoSkills span{font-size:.72rem;letter-spacing:.14em;color:var(--color-accent)}
+.photoSkills p{margin:0;font-size:.9rem}
 .photoGrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px}
 .photoCard{color:var(--color-ink)}
 .photoCard img{width:100%;aspect-ratio:3/2;object-fit:cover}
@@ -43,6 +54,9 @@
   .sectionHeader span{margin:0}
   .practiceGrid{grid-template-columns:1fr}
   .practiceGrid article{border-right:0;border-bottom:1px solid var(--color-line)}
+  .photoHighlights{grid-template-columns:1fr}
+  .photoHighlight{border-right:0;border-bottom:1px solid var(--color-line)}
+  .photoHighlight:last-child{border:0}
   .photoGrid{grid-template-columns:1fr 1fr}
   .twoCol{grid-template-columns:1fr}
 }

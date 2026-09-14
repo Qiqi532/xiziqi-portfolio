@@ -103,7 +103,7 @@ export const skillGroups = [
   { label: '工程表达', items: ['SolidWorks', 'AutoCAD'] },
   { label: '学术写作', items: ['LaTeX', 'Microsoft Office'] },
   { label: 'AI 辅助开发', items: ['Codex', 'Claude', 'Vibe Coding'] },
-  { label: '视觉创作', items: ['Adobe 系列'] },
+  { label: '视觉创作', items: ['Photoshop', 'Lightroom', 'Camera Raw', 'Premiere Pro', 'Nikon Z5 微单摄影', '无人机航拍'] },
 ];
 
 export const practiceChapters = [
@@ -138,6 +138,18 @@ export const selectedPhotography = [
   { key: 'landscape', category: '风光', title: '城市与远方', href: '/portfolio?category=landscape' },
   { key: 'portrait', category: '人像', title: '人与片刻', href: '/portfolio?category=portrait' },
 ];
+
+export const photography = {
+  lead: '在校园、城市与旅途之间持续按下快门，关注光线、空间与人的关系。长期拍摄校园日常、城市风光与人像三类题材，作品见于《光明日报》与「中国国家旅游」，现为视觉中国、海丝泉州签约摄影师。',
+  social: '同时以「曦熙子柒」在小红书运营摄影与旅行内容，分享校园生活、摄影攻略与旅行见闻，累计收获 1.8 万+ 获赞与收藏。',
+  highlights: [
+    { value: '签约摄影师', note: '视觉中国 · 海丝泉州' },
+    { value: '1.8 万+ 获赞与收藏', note: '小红书「曦熙子柒」' },
+    { value: '三大长期题材', note: '校园日常 / 城市与远方 / 人与片刻' },
+  ],
+  equipment: ['Nikon Z5 微单相机', '奥林巴斯 OM-1 胶片相机', 'DJI Action 5 Pro', '无人机航拍'],
+  postTools: ['Photoshop', 'Lightroom', 'Camera Raw', 'Premiere Pro'],
+};
 
 export const personalGallery = [
   { src: profileImage('gallery/15-hong-kong.jpg'), alt: '黄新宏在香港街头', ratio: 'portrait', span: 'tall', position: '50% 45%' },

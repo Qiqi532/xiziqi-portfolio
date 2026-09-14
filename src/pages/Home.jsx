@@ -5,6 +5,7 @@ import HeroCarousel from '../components/HeroCarousel';
 import { images } from '../data/images';
 import {
   heroSlides,
+  photography,
   practiceChapters,
   profile,
   researchProjects,
@@ -87,6 +88,18 @@ export default function Home() {
       <section className={styles.section}>
         <div className="container">
           <header className={styles.sectionHeader}><span>03 / PHOTOGRAPHY</span><h2>以影像保存观察</h2></header>
+          <div className={styles.photoIntro}>
+            <p>{photography.lead}</p>
+            <p>{photography.social}</p>
+          </div>
+          <div className={styles.photoHighlights}>
+            {photography.highlights.map((item) => (
+              <div key={item.note} className={styles.photoHighlight}>
+                <strong>{item.value}</strong>
+                <span>{item.note}</span>
+              </div>
+            ))}
+          </div>
           <div className={styles.photoGrid}>
             {selectedPhotography.map((item) => {
               const selectedImage = categoryImages[item.key];
@@ -97,6 +110,10 @@ export default function Home() {
                 </Link>
               );
             })}
+          </div>
+          <div className={styles.photoSkills}>
+            <div><span>摄影设备</span><p>{photography.equipment.join(' · ')}</p></div>
+            <div><span>后期处理</span><p>{photography.postTools.join(' · ')}</p></div>
           </div>
           <Link className={styles.sectionLink} to="/portfolio">浏览全部摄影作品</Link>
         </div>

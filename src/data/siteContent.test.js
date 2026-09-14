@@ -75,7 +75,7 @@ describe('public homepage content', () => {
     expect(lumina.external).toBe(true);
 
     expect(skillGroups.flatMap(({ items }) => items)).toEqual(
-      expect.arrayContaining(['Python', 'PyTorch', 'COMSOL', 'Origin', 'SolidWorks', 'AutoCAD', 'LaTeX', 'Adobe 系列']),
+      expect.arrayContaining(['Python', 'PyTorch', 'COMSOL', 'Origin', 'SolidWorks', 'AutoCAD', 'LaTeX', 'Photoshop', 'Lightroom', 'Camera Raw', 'Premiere Pro', '无人机航拍']),
     );
     expect(practiceChapters).toHaveLength(3);
     expect(contactChannels.xiaohongshu.href).toBe(
