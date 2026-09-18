@@ -8,8 +8,7 @@
     "build": "vite build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "preview": "vite preview",
-    "deploy": "vite build && npx gh-pages -d dist --no-history"
+    "preview": "vite preview"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

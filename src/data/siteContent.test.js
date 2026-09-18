@@ -67,12 +67,24 @@ describe('public homepage content', () => {
     expect(competitions).toHaveLength(3);
     expect(competitions.some(({ title }) => title.includes('实验物理教学研讨会'))).toBe(true);
     expect(researchProjects).toHaveLength(5);
-    expect(researchProjects.some(({ id }) => id === 'lhc-top-tagging')).toBe(true);
+    expect(researchProjects.some(({ id }) => id === 'lhc-top-tagging')).toBe(false);
+    expect(researchProjects.map(({ label }) => label)).toEqual(['R-01', 'R-02', 'R-03', 'R-04', 'R-05']);
 
     const lumina = researchProjects.find(({ id }) => id === 'lumina-select');
     expect(lumina).toBeDefined();
     expect(lumina.href).toBe('https://github.com/Qiqi532/lumina-select');
     expect(lumina.external).toBe(true);
+
+    const tesla = researchProjects.find(({ id }) => id === 'tesla-scene-studio');
+    expect(tesla).toBeDefined();
+    expect(tesla.label).toBe('R-05');
+    expect(tesla.href).toBe('https://tesla-window-studio-demo.pages.dev/');
+    expect(tesla.external).toBe(true);
+    expect(tesla.linkLabel).toBe('打开在线演示 ↗');
+    expect(tesla.media.src).toContain('images/research/tesla-scene-studio.jpg');
+    expect(tesla.details.some((detail) => detail.includes('CC BY 4.0'))).toBe(true);
+
+    expect(researchProjects.filter(({ external }) => external).every(({ linkLabel }) => Boolean(linkLabel))).toBe(true);
 
     expect(skillGroups.flatMap(({ items }) => items)).toEqual(
       expect.arrayContaining(['Python', 'PyTorch', 'COMSOL', 'Origin', 'SolidWorks', 'AutoCAD', 'LaTeX', 'Photoshop', 'Lightroom', 'Camera Raw', 'Premiere Pro', '无人机航拍']),

@@ -1,0 +1,10 @@
+# Cloudflare Pages 项目配置
+# 用途：让命令行部署无需再传路径与项目名
+#   npx wrangler pages deploy
+#
+# 仅首次使用需登录一次：npx wrangler login
+# 已登录后每次更新站点只需：npm run build && npx wrangler pages deploy
+
+name = "xiziqi-portfolio"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-16"

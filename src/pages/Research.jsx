@@ -38,7 +38,7 @@ export default function Research() {
                 <p className={styles.contribution}>{project.contribution}</p>
                 {project.external && (
                   <a href={project.href} target="_blank" rel="noreferrer" className={styles.projectLink}>
-                    访问 GitHub 仓库 ↗
+                    {project.linkLabel || '访问 GitHub 仓库 ↗'}
                   </a>
                 )}
               </div>

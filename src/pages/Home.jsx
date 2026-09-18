@@ -60,7 +60,9 @@ export default function Home() {
                 <h3>{project.title}</h3>
                 <p>{project.summary}</p>
                 {project.external ? (
-                  <a href={project.href} target="_blank" rel="noreferrer">访问 GitHub 仓库 ↗</a>
+                  <a href={project.href} target="_blank" rel="noreferrer">
+                    {project.linkLabel || '访问 GitHub 仓库 ↗'}
+                  </a>
                 ) : (
                   <Link to={project.href}>查看项目细节 →</Link>
                 )}

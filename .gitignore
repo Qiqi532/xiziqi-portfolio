@@ -4,3 +4,8 @@ dist
 .claude
 .env
 tmp
+
+# Local app cache / sensitive materials (do not commit)
+.workbuddy/
+.wbapp_*.genie
+intro/
