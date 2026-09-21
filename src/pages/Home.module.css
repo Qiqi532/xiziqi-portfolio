@@ -16,6 +16,34 @@
 .sectionHeader{display:grid;grid-template-columns:200px 1fr;align-items:start;margin-bottom:56px}
 .sectionHeader span{margin:12px 0 0}
 .sectionHeader h2{max-width:720px}
+.educationLead{max-width:780px;margin:0 0 40px;font-size:.98rem}
+.educationGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.educationCard{display:flex;flex-direction:column;border:1px solid var(--color-line);background:var(--color-paper);overflow:hidden}
+.educationMedia{position:relative;overflow:hidden;background:var(--color-fog)}
+.educationMedia img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .7s ease}
+.educationCard:hover .educationMedia img{transform:scale(1.035)}
+.educationStage{position:absolute;left:0;top:0;padding:7px 14px;background:var(--color-ink);color:var(--color-paper);font-size:.68rem;letter-spacing:.16em}
+.educationBody{display:flex;flex-direction:column;flex:1;padding:26px 28px 30px}
+.educationMeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-bottom:16px;font-size:.72rem;letter-spacing:.12em;color:var(--color-accent)}
+.educationCard h3{font-family:var(--font-heading);font-size:1.45rem;line-height:1.3}
+.educationEn{display:block;margin-top:6px;font-family:var(--font-body);font-size:.68rem;font-weight:400;letter-spacing:.14em;color:var(--color-accent);text-transform:uppercase}
+.educationProgram{margin:18px 0 18px;font-size:.94rem;color:var(--color-ink)}
+.educationDiscipline{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;padding:12px 16px;background:var(--color-fog);border-left:2px solid var(--color-accent)}
+.educationDiscipline span{font-size:.74rem;letter-spacing:.06em;color:var(--color-text)}
+.educationDiscipline strong{flex-shrink:0;font-family:var(--font-heading);font-weight:500;font-size:1.14rem;letter-spacing:.02em;color:var(--color-ink)}
+.educationTags{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:24px;border-bottom:1px solid var(--color-line)}
+.educationTags li{padding:5px 12px;border:1px solid var(--color-line);border-radius:var(--radius-sm);font-size:.7rem;letter-spacing:.08em;color:var(--color-accent)}
+.educationMotto{margin:24px 0 20px;padding:2px 0 2px 18px;border-left:2px solid var(--color-accent)}
+.educationMotto figcaption{font-size:.68rem;letter-spacing:.18em;color:var(--color-accent);margin-bottom:8px}
+.educationMotto p{font-family:var(--font-heading);font-size:1.06rem;line-height:1.6;color:var(--color-ink)}
+.educationMotto small{display:block;margin-top:9px;font-size:.74rem;line-height:1.65;color:var(--color-text)}
+.educationNote{flex:1;font-size:.92rem}
+.educationRankings{margin-top:24px;border-top:1px solid var(--color-line)}
+.educationRankings li{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--color-line)}
+.educationRankLabel{font-size:.82rem;color:var(--color-text)}
+.educationRankLabel i{margin-left:7px;font-style:normal;font-size:.7rem;letter-spacing:.06em;color:var(--color-accent)}
+.educationRankValue{flex-shrink:0;font-family:var(--font-heading);font-size:.92rem;color:var(--color-ink)}
+.educationFootnote{margin-top:28px;font-size:.78rem;color:var(--color-text);opacity:.8}
 .twoCol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .record{padding:30px;border:1px solid var(--color-line);background:var(--color-paper)}
 .record>span{margin-bottom:22px}
@@ -52,6 +80,7 @@
   .heroInner{grid-template-columns:1fr;gap:38px}
   .sectionHeader{grid-template-columns:1fr;gap:12px}
   .sectionHeader span{margin:0}
+  .educationGrid{grid-template-columns:1fr}
   .practiceGrid{grid-template-columns:1fr}
   .practiceGrid article{border-right:0;border-bottom:1px solid var(--color-line)}
   .photoHighlights{grid-template-columns:1fr}

@@ -72,6 +72,14 @@ GALLERY_IMAGES = {
     "迪士尼.jpg": "gallery/15-disney.jpg",
 }
 
+EDUCATION_IMAGES = {
+    "sysu.jpg": "education/sysu.jpg",
+    "nju.jpg": "education/nju.jpg",
+}
+
+for source_name, destination_name in EDUCATION_IMAGES.items():
+    save_web_image(INTRO / source_name, PUBLIC / destination_name)
+
 for source_name, destination_name in HERO_IMAGES.items():
     save_web_image(INTRO / "pic" / source_name, PUBLIC / "profile" / destination_name)
 for source_name, destination_name in GALLERY_IMAGES.items():

@@ -2,15 +2,61 @@ const image = (folder, file) => `${import.meta.env.BASE_URL}images/${folder}/${f
 const profileImage = (file) => image('profile', file);
 const researchImage = (file) => image('research', file);
 const practiceImage = (file) => image('practice', file);
+const educationImage = (file) => image('education', file);
 
 export const profile = {
   name: '黄新宏',
   englishName: 'Xinhong Huang',
-  role: '中山大学物理学本科生',
-  statement: '在公式与光影之间，持续探索。',
-  introduction: '关注光纤传感、天文光谱与机器学习，正在开发面向物理研究的可解释 AI 论文情报平台；同时持续参与校园传播、志愿服务和摄影创作。',
+  role: '中山大学物理与天文学院本科生',
+  statement: '在两座校园之间，追问公式与光影。',
+  introduction: '2023 年入学，2027 年将赴南京大学物理学院继续深造。两所学校都肇始于二十世纪初，也都以基础学科见长；我在两座校园里学习物理、参与校园媒体与志愿服务，也用相机记录沿途的光线。',
   email: 'huangxh89@mail2.sysu.edu.cn',
 };
+
+export const education = [
+  {
+    id: 'sysu',
+    school: '中山大学',
+    schoolEn: 'Sun Yat-sen University',
+    stage: '本科阶段',
+    degree: '本科 · 理学学士',
+    college: '物理与天文学院',
+    major: '物理学专业',
+    period: '2023.09 — 2027.06',
+    tags: ['教育部直属', '双一流', '985', '211', '强基计划'],
+    motto: '博学 · 审问 · 慎思 · 明辨 · 笃行',
+    mottoNote: '孙中山 1924 年为建校题写，语出《礼记·中庸》',
+    discipline: { label: '教育部第五轮学科评估', subject: '物理学', grade: 'A-' },
+    note: '1924 年由孙中山先生亲手创办，初名国立广东大学，1926 年改称国立中山大学。广州南校园「康乐园」以红砖绿瓦的近代建筑群著称，如今是广州、珠海、深圳三校区五校园的综合性大学，医科与人文社科同具深厚底蕴。',
+    rankings: [
+      { label: '软科世界大学学术排名', year: '2026', value: '全球第 62' },
+      { label: 'QS 世界大学排名', year: '2027', value: '全球第 258' },
+      { label: 'THE 世界大学排名', year: '2026', value: '201–250' },
+    ],
+    media: { src: educationImage('sysu.jpg'), alt: '中山大学康乐园近代建筑群', position: '50% 50%' },
+  },
+  {
+    id: 'nju',
+    school: '南京大学',
+    schoolEn: 'Nanjing University',
+    stage: '硕士阶段',
+    degree: '硕士 · 理学硕士',
+    college: '物理学院',
+    major: '物理学专业',
+    period: '2027.09 — 2030.06',
+    tags: ['教育部直属', '双一流', '985', '211', '强基计划', 'C9 联盟'],
+    motto: '诚朴雄伟 · 励学敦行',
+    mottoNote: '「诚朴雄伟」由罗家伦 1932 年提出，2002 年百年校庆补入「励学敦行」',
+    discipline: { label: '教育部第五轮学科评估', subject: '物理学', grade: 'A+' },
+    note: '前身可追溯至 1902 年创办的三江师范学堂，1928 年定名国立中央大学，1950 年改称南京大学。鼓楼校区的北大楼是标志性建筑，学校以基础学科见长，理科与人文积淀都很深。',
+    rankings: [
+      { label: '软科世界大学学术排名', year: '2026', value: '全球第 70' },
+      { label: 'QS 世界大学排名', year: '2027', value: '全球第 90' },
+      { label: 'THE 世界大学排名', year: '2026', value: '全球第 62' },
+    ],
+    media: { src: educationImage('nju.jpg'), alt: '南京大学校门', position: '50% 45%' },
+  },
+];
 
 export const heroSlides = [
   { src: profileImage('hero-shanghai.jpg'), alt: '黄新宏在上海旅行', location: '上海', position: '50% 48%', fit: 'cover' },

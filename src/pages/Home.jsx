@@ -4,6 +4,7 @@ import ContactLinks from '../components/ContactLinks';
 import HeroCarousel from '../components/HeroCarousel';
 import { images } from '../data/images';
 import {
+  education,
   heroSlides,
   photography,
   practiceChapters,
@@ -37,7 +38,7 @@ export default function Home() {
         <div className={styles.grid} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
-            <span className={styles.index}>SYSU · PHYSICS · RESEARCH & CREATION</span>
+            <span className={styles.index}>SYSU → NJU · PHYSICS · RESEARCH & CREATION</span>
             <p className={styles.name}>{profile.name} <small>{profile.englishName}</small></p>
             <h1>{profile.statement}</h1>
             <p className={styles.lead}>{profile.role}。{profile.introduction}</p>
@@ -50,9 +51,78 @@ export default function Home() {
         </div>
       </section>
 
+      <section className={styles.section} aria-labelledby="education-title">
+        <div className="container">
+          <header className={styles.sectionHeader}>
+            <span>01 / EDUCATION</span>
+            <h2 id="education-title">在两所百年学府里求学</h2>
+          </header>
+          <p className={styles.educationLead}>
+            两所学校都肇始于二十世纪初，也都把基础学科放在核心位置。下面把两校的办学脉络、校训与公开排名一并列出。
+          </p>
+          <div className={styles.educationGrid}>
+            {education.map((item, index) => (
+              <motion.article
+                key={item.id}
+                className={styles.educationCard}
+                {...reveal}
+                transition={{ delay: index * 0.08 }}
+              >
+                <div className={styles.educationMedia}>
+                  <img
+                    src={item.media.src}
+                    alt={item.media.alt}
+                    loading="lazy"
+                    style={{ objectPosition: item.media.position }}
+                  />
+                  <span className={styles.educationStage}>{item.stage}</span>
+                </div>
+                <div className={styles.educationBody}>
+                  <div className={styles.educationMeta}>
+                    <span>{item.period}</span>
+                    <span>{item.degree}</span>
+                  </div>
+                  <h3>
+                    {item.school}
+                    <small className={styles.educationEn}>{item.schoolEn}</small>
+                  </h3>
+                  <p className={styles.educationProgram}>{item.college} · {item.major}</p>
+                  <div className={styles.educationDiscipline}>
+                    <span>{item.discipline.label} · {item.discipline.subject}</span>
+                    <strong>{item.discipline.grade}</strong>
+                  </div>
+                  <ul className={styles.educationTags}>
+                    {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                  </ul>
+                  <figure className={styles.educationMotto}>
+                    <figcaption>校训</figcaption>
+                    <p>{item.motto}</p>
+                    <small>{item.mottoNote}</small>
+                  </figure>
+                  <p className={styles.educationNote}>{item.note}</p>
+                  <ul className={styles.educationRankings}>
+                    {item.rankings.map((ranking) => (
+                      <li key={`${ranking.label}-${ranking.year}`}>
+                        <span className={styles.educationRankLabel}>
+                          {ranking.label}<i>{ranking.year}</i>
+                        </span>
+                        <span className={styles.educationRankValue}>{ranking.value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+          <p className={styles.educationFootnote}>
+            排名取自 2026 软科世界大学学术排名、2027 QS 世界大学排名与 2026 泰晤士高等教育世界大学排名；学科评估为教育部学位与研究生教育发展中心第五轮评估结果，完整名单未统一公开发布，此处依据学校官方公开口径整理。
+          </p>
+        </div>
+      </section>
+
       <section className={styles.section}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>01 / RESEARCH</span><h2>用实验与计算理解问题</h2></header>
+          <header className={styles.sectionHeader}><span>02 / RESEARCH</span><h2>用实验与计算理解问题</h2></header>
           <div className={styles.twoCol}>
             {featuredProjects.map((project) => (
               <motion.article key={project.id} className={styles.record} {...reveal}>
@@ -75,7 +145,7 @@ export default function Home() {
 
       <section className={`${styles.section} ${styles.muted}`}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>02 / PRACTICE</span><h2>在真实现场承担具体角色</h2></header>
+          <header className={styles.sectionHeader}><span>03 / PRACTICE</span><h2>在真实现场承担具体角色</h2></header>
           <div className={styles.practiceGrid}>
             {practiceChapters.map((item) => (
               <motion.article key={item.label} {...reveal}>
@@ -89,7 +159,7 @@ export default function Home() {
 
       <section className={styles.section}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>03 / PHOTOGRAPHY</span><h2>以影像保存观察</h2></header>
+          <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2>以影像保存观察</h2></header>
           <div className={styles.photoIntro}>
             <p>{photography.lead}</p>
             <p>{photography.social}</p>
@@ -123,7 +193,7 @@ export default function Home() {
 
       <section className={styles.contact}>
         <div className="container">
-          <span>04 / CONTACT</span>
+          <span>05 / CONTACT</span>
           <h2>讨论研究、影像或一次合作。</h2>
           <ContactLinks email={profile.email} light />
         </div>
