@@ -11,13 +11,13 @@ it('renders approved research projects', () => {
   expect(screen.getByText('共同第一作者')).toBeInTheDocument();
   expect(screen.getByText(/第十三届全国高等学校实验物理教学研讨会/)).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /研讨会.*一等奖证书/ })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: '研究计算' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: '计算与建模' })).toBeInTheDocument();
   expect(screen.getByText('SolidWorks')).toBeInTheDocument();
 });
 
 it('renders the interactive Tesla demo record with its own link label', () => {
   render(<MemoryRouter><Research /></MemoryRouter>);
-  expect(screen.getByText('Tesla Model 3 · Scene Studio')).toBeInTheDocument();
+  expect(screen.getByText('Tesla Model 3 · 个人车模仿真项目')).toBeInTheDocument();
 
   const demoLink = screen.getByRole('link', { name: '打开在线演示 ↗' });
   expect(demoLink).toHaveAttribute('href', 'https://tesla-window-studio-demo.pages.dev/');

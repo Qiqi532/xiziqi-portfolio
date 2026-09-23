@@ -38,10 +38,11 @@ export default function Home() {
         <div className={styles.grid} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
-            <span className={styles.index}>SYSU → NJU · PHYSICS · RESEARCH & CREATION</span>
+            <span className={styles.index}>SYSU → NJU · PHYSICS · LIGHT · CODE</span>
             <p className={styles.name}>{profile.name} <small>{profile.englishName}</small></p>
             <h1>{profile.statement}</h1>
-            <p className={styles.lead}>{profile.role}。{profile.introduction}</p>
+            <p className={styles.role}>{profile.role}</p>
+            <p className={styles.lead}>{profile.introduction}</p>
             <div className={styles.actions}>
               <Link to="/research">了解研究方向</Link>
               <Link to="/portfolio" className={styles.secondary}>浏览摄影作品</Link>
@@ -55,10 +56,10 @@ export default function Home() {
         <div className="container">
           <header className={styles.sectionHeader}>
             <span>01 / EDUCATION</span>
-            <h2 id="education-title">在两所百年学府里求学</h2>
+            <h2 id="education-title">在两座百年学府里读书</h2>
           </header>
           <p className={styles.educationLead}>
-            两所学校都肇始于二十世纪初，也都把基础学科放在核心位置。下面把两校的办学脉络、校训与公开排名一并列出。
+            两所学校都肇始于二十世纪初，也都把基础学科放在核心位置。下面是两校的办学脉络、校训与公开排名。
           </p>
           <div className={styles.educationGrid}>
             {education.map((item, index) => (
@@ -122,7 +123,7 @@ export default function Home() {
 
       <section className={styles.section}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>02 / RESEARCH</span><h2>用实验与计算理解问题</h2></header>
+          <header className={styles.sectionHeader}><span>02 / RESEARCH</span><h2>把问题拆到可以测量的地方</h2></header>
           <div className={styles.twoCol}>
             {featuredProjects.map((project) => (
               <motion.article key={project.id} className={styles.record} {...reveal}>
@@ -145,7 +146,7 @@ export default function Home() {
 
       <section className={`${styles.section} ${styles.muted}`}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>03 / PRACTICE</span><h2>在真实现场承担具体角色</h2></header>
+          <header className={styles.sectionHeader}><span>03 / PRACTICE</span><h2>在真实现场，做具体的事</h2></header>
           <div className={styles.practiceGrid}>
             {practiceChapters.map((item) => (
               <motion.article key={item.label} {...reveal}>
@@ -159,7 +160,7 @@ export default function Home() {
 
       <section className={styles.section}>
         <div className="container">
-          <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2>以影像保存观察</h2></header>
+          <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2>把看见的光留下来</h2></header>
           <div className={styles.photoIntro}>
             <p>{photography.lead}</p>
             <p>{photography.social}</p>
@@ -194,7 +195,7 @@ export default function Home() {
       <section className={styles.contact}>
         <div className="container">
           <span>05 / CONTACT</span>
-          <h2>讨论研究、影像或一次合作。</h2>
+          <h2>想聊研究、影像，或一次合作，欢迎来信。</h2>
           <ContactLinks email={profile.email} light />
         </div>
       </section>

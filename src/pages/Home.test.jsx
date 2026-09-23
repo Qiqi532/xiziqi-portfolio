@@ -4,11 +4,11 @@ import Home from './Home';
 
 it('renders the long-form personal homepage entry points', () => {
   render(<MemoryRouter><Home /></MemoryRouter>);
-  expect(screen.getByRole('heading', { name: '在两座校园之间，追问公式与光影。' })).toBeInTheDocument();
-  expect(screen.getByText(/2027 年将赴南京大学物理学院继续深造/)).toBeInTheDocument();
-  expect(screen.getByText('SYSU → NJU · PHYSICS · RESEARCH & CREATION')).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: '我拍下光，也想知道它从哪里来。' })).toBeInTheDocument();
+  expect(screen.getByText(/2027 年将赴南京大学继续深造/)).toBeInTheDocument();
+  expect(screen.getByText('SYSU → NJU · PHYSICS · LIGHT · CODE')).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /上海/ })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: '在两所百年学府里求学' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: '在两座百年学府里读书' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /中山大学/ })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /南京大学/ })).toBeInTheDocument();
   expect(screen.getByText('物理与天文学院 · 物理学专业')).toBeInTheDocument();

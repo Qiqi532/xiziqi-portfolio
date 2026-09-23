@@ -23,9 +23,9 @@ describe('public homepage content', () => {
   });
 
   it('leads the opening introduction with the two-school path', () => {
-    expect(profile.role).toBe('中山大学物理与天文学院本科生');
-    expect(profile.statement).toBe('在两座校园之间，追问公式与光影。');
-    expect(profile.introduction).toContain('2027 年将赴南京大学物理学院继续深造');
+    expect(profile.role).toBe('学生 · 摄影爱好者 · 独立开发者');
+    expect(profile.statement).toBe('我拍下光，也想知道它从哪里来。');
+    expect(profile.introduction).toContain('2027 年将赴南京大学继续深造');
     expect(profile.introduction).toContain('两所学校都肇始于二十世纪初');
     expect(`${profile.role}${profile.introduction}`).toContain('中山大学');
     expect(profile.introduction).not.toMatch(/光纤|传感|机器学习|平台/);

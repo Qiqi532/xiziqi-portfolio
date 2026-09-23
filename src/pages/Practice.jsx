@@ -15,7 +15,7 @@ export default function Practice() {
         <header className={styles.header}>
           <span>PRACTICE & SERVICE</span>
           <h1>个人实践</h1>
-          <p>把观察转化为记录，把专业之外的时间投入真实的人、现场与共同任务。</p>
+          <p>把看到的变成留下的，也把课业之外的时间交给具体的人和现场。</p>
         </header>
 
         <section className={styles.chapters} aria-label="实践经历">

@@ -23,7 +23,7 @@ export default function About() {
             <h2>{profile.name}</h2>
             <p className={styles.role}>{profile.role}</p>
             <p>{profile.introduction}</p>
-            <p>我习惯从物理问题中寻找结构，也通过摄影练习对光线、空间与人的观察。这个网站记录正在推进的研究、持续参与的实践，以及沿途留下的影像。</p>
+            <p>我习惯把问题拆开来看，也习惯用相机把光留下来。这里放着我在做的研究、走过的现场，和一路拍下的照片。</p>
             <ContactLinks email={profile.email} />
           </div>
         </div>

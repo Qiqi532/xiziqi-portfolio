@@ -9,7 +9,7 @@ export default function Footer() {
         <a href="mailto:huangxh89@mail2.sysu.edu.cn" className={styles.mail}>邮箱联系</a>
 
         <p className={styles.copy}>
-          &copy; {new Date().getFullYear()} 黄新宏 · 研究、实践与摄影
+          &copy; {new Date().getFullYear()} 黄新宏 · 公式、光影与代码
         </p>
       </div>
     </footer>

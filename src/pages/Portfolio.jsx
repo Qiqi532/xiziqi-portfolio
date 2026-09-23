@@ -20,7 +20,7 @@ export default function Portfolio() {
           <h1>摄影</h1>
           <hr className="section-divider" />
           <p className={styles.subtitle}>
-            在校园、城市与旅途中，记录光线和人与空间的关系。现为视觉中国、海丝泉州签约摄影师，小红书「曦熙子柒」持续分享摄影与旅行内容。
+            在校园、城市与旅途之间，记录光线，也记录人与空间的关系。现为视觉中国、海丝泉州签约摄影师，小红书「曦熙子柒」持续更新摄影与旅行内容。
           </p>
         </motion.div>
 

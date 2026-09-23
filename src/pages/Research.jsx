@@ -15,7 +15,7 @@ export default function Research() {
         <header className={styles.header}>
           <span>RESEARCH & LEARNING</span>
           <h1>研究学习</h1>
-          <p>从可测量的光信号到恒星光谱，在实验、计算与物理解释之间建立联系。</p>
+          <p>从可测量的光信号到恒星光谱，在实验、计算与物理解释之间来回走。</p>
         </header>
 
         <section className={styles.projects} aria-labelledby="projects-title">

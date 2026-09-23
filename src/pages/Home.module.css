@@ -7,7 +7,8 @@
 .name{font-family:var(--font-heading);color:var(--color-ink);font-size:1.5rem;margin-bottom:42px}
 .name small{font-family:var(--font-body);font-size:.72rem;color:var(--color-accent);letter-spacing:.12em;margin-left:10px}
 .hero h1{max-width:760px}
-.lead{max-width:680px;margin:28px 0 36px;font-size:1.06rem;overflow-wrap:anywhere}
+.role{font-size:.82rem;letter-spacing:.14em;color:var(--color-accent);margin:24px 0 0}
+.lead{max-width:680px;margin:14px 0 36px;font-size:1.06rem;overflow-wrap:anywhere}
 .actions{display:flex;gap:14px;flex-wrap:wrap}
 .actions a,.sectionLink{display:inline-block;padding:11px 20px;border:1px solid var(--color-accent);color:var(--color-ink);font-size:.9rem}
 .actions .secondary{border-color:var(--color-line)}
