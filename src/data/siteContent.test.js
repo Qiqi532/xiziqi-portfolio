@@ -153,7 +153,25 @@ describe('public homepage content', () => {
     expect(skillGroups.flatMap(({ items }) => items)).toEqual(
       expect.arrayContaining(['Python', 'PyTorch', 'COMSOL', 'Origin', 'SolidWorks', 'AutoCAD', 'LaTeX', 'Photoshop', 'Lightroom', 'Camera Raw', 'Premiere Pro', '无人机航拍']),
     );
-    expect(practiceChapters).toHaveLength(3);
+    expect(practiceChapters).toHaveLength(4);
+    expect(practiceChapters.map(({ label }) => label)).toEqual(['P-01', 'P-02', 'P-03', 'P-04']);
+
+    // 首页实践卡片栏宽 224px / 字号 26.4px，单行最多放 8 字；超了就会掉字。
+    // titleLines 是给首页卡片用的语义断行，拼接后必须等于 title。
+    practiceChapters.forEach(({ title, titleLines }) => {
+      expect(titleLines).toHaveLength(2);
+      expect(titleLines.join('')).toBe(title);
+      titleLines.forEach((line) => expect(Array.from(line).length).toBeLessThanOrEqual(8));
+    });
+
+    const insta360 = practiceChapters.find(({ label }) => label === 'P-04');
+    expect(insta360).toBeDefined();
+    expect(insta360.title).toBe('影石校园影像创作者');
+    expect(insta360.body.some((paragraph) => paragraph.includes('2025 年入选'))).toBe(true);
+    expect(insta360.media).toHaveLength(3);
+    expect(insta360.media.every(({ fit }) => fit === 'contain')).toBe(true);
+    expect(insta360.media.every(({ src }) => src.includes('/images/practice/insta360-'))).toBe(true);
+    expect(insta360.media.every(({ caption }) => Boolean(caption))).toBe(true);
     expect(contactChannels.xiaohongshu.href).toBe(
       'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818',
     );

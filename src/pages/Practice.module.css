@@ -20,6 +20,11 @@
 .media3 img{min-height:190px}
 .cover{object-fit:cover}
 .contain{object-fit:contain;padding:12px;background:#fff}
+.trio{grid-template-columns:repeat(3,1fr);grid-template-rows:auto}
+.trio figure:first-child{grid-row:auto}
+.trio figure{display:flex;flex-direction:column}
+.trio img{height:auto;min-height:0;max-height:none;aspect-ratio:1/1}
+.trio figcaption{margin-top:auto}
 .media figcaption{display:grid;gap:4px;padding:12px 0;background:var(--color-paper);font-size:.78rem}
 .media figcaption strong{color:var(--color-ink)}
 .media figcaption span{color:var(--color-accent)}
@@ -37,4 +42,6 @@
   .media3 figure:first-child{grid-row:auto}
   .media img,.media3 img{height:auto;min-height:0;max-height:none;aspect-ratio:auto}
   .media .cover{aspect-ratio:4/3;object-fit:cover}
+  .trio{grid-template-columns:1fr}
+  .trio img{aspect-ratio:16/9}
 }

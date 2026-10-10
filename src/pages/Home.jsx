@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactLinks from '../components/ContactLinks';
@@ -150,7 +151,16 @@ export default function Home() {
           <div className={styles.practiceGrid}>
             {practiceChapters.map((item) => (
               <motion.article key={item.label} {...reveal}>
-                <span>{item.label}</span><h3>{item.title}</h3><p>{item.summary}</p>
+                <span>{item.label}</span>
+                <h3>
+                  {(item.titleLines || [item.title]).map((line, index) => (
+                    <Fragment key={line}>
+                      {index > 0 ? <br /> : null}
+                      {line}
+                    </Fragment>
+                  ))}
+                </h3>
+                <p>{item.summary}</p>
               </motion.article>
             ))}
           </div>

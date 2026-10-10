@@ -34,7 +34,13 @@ export default function Practice() {
                   <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>
                 ))}
               </div>
-              <div className={`${styles.media} ${styles[`media${chapter.media.length}`]}`}>
+              <div
+                className={[
+                  styles.media,
+                  styles[`media${chapter.media.length}`],
+                  chapter.layout ? styles[chapter.layout] : '',
+                ].filter(Boolean).join(' ')}
+              >
                 {chapter.media.map((media) => (
                   <figure key={media.src}>
                     <img

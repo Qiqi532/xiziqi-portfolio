@@ -22,6 +22,14 @@ it('renders the long-form personal homepage entry points', () => {
   expect(screen.getByRole('img', { name: /南京大学校门/ })).toBeInTheDocument();
   expect(screen.queryByText('01 / PORTRAIT')).not.toBeInTheDocument();
   expect(screen.queryByRole('heading', { name: '研究之外的个人切面' })).not.toBeInTheDocument();
+  // 实践卡片标题按语义断成两行，避免末字掉到第二行
+  const practiceCards = ['校园传播与媒体采用', '十五运会志愿服务', '社会实践与影像记录', '影石校园影像创作者'];
+  practiceCards.forEach((title) => {
+    const heading = screen.getByText(title);
+    expect(heading.tagName).toBe('H3');
+    expect(heading.querySelectorAll('br')).toHaveLength(1);
+  });
+
   expect(screen.getByRole('link', { name: /进入研究学习页/ })).toHaveAttribute('href', '/research');
   expect(screen.getByRole('link', { name: /浏览全部摄影作品/ })).toHaveAttribute('href', '/portfolio');
   expect(screen.getByRole('link', { name: /小红书主页/ })).toHaveAttribute(

@@ -14,3 +14,12 @@ it('renders approved practice highlights', () => {
   expect(screen.getAllByRole('img', { name: /十五运会/ })).toHaveLength(3);
   expect(screen.getByText(/锦绣连山，针线间的壮乡记忆/)).toBeInTheDocument();
 });
+
+it('renders the Insta360 campus creator chapter', () => {
+  render(<MemoryRouter><Practice /></MemoryRouter>);
+  expect(screen.getByRole('heading', { name: '影石校园影像创作者' })).toBeInTheDocument();
+  expect(screen.getByText(/2025 年入选影石 Insta360 校园影像创作者计划/)).toBeInTheDocument();
+  expect(screen.getAllByRole('img', { name: /影石Insta360/ })).toHaveLength(3);
+  expect(screen.getByText(/X 系列 · 8K 全景，先拍后取景/)).toBeInTheDocument();
+  expect(screen.getByText(/Ace Pro 系列 · 与徕卡联合研发，昼夜运动画面/)).toBeInTheDocument();
+});

@@ -158,7 +158,7 @@ export const skillGroups = [
 
 export const practiceChapters = [
   {
-    label: 'P-01', title: '校园传播与媒体采用',
+    label: 'P-01', title: '校园传播与媒体采用', titleLines: ['校园传播', '与媒体采用'],
     summary: '用影像记录校园、学术现场与公共议题，让照片走到更多读者面前。',
     body: ['参与校党委宣传部、校团委宣传部工作，并负责物理与天文学院新媒体中心，累计为校级新媒体供稿图片上百张。', '摄影作品见于《光明日报》与“中国国家旅游”公众号，并成为视觉中国、海丝泉州签约摄影师。'],
     media: [
@@ -168,18 +168,34 @@ export const practiceChapters = [
     links: [{ label: '阅读中国国家旅游原文', href: 'https://mp.weixin.qq.com/s/Z0PCQqgu3jJmgwXXOfa8ng' }],
   },
   {
-    label: 'P-02', title: '十五运会志愿服务',
+    label: 'P-02', title: '十五运会志愿服务', titleLines: ['十五运会', '志愿服务'],
     summary: '在大型赛事的现场做事，和一群人把同一件事稳稳地做完。',
     body: ['参与第十五届全国运动会赛事服务，获中山大学十五运会先进个人及优秀志愿者。', '持续参与公益服务，获评中山大学二星志愿者。'],
     media: [1, 2, 3].map((number) => ({ src: practiceImage(`national-games-${number}.jpg`), alt: `十五运会志愿服务现场照片 ${number}`, fit: 'cover' })),
     links: [],
   },
   {
-    label: 'P-03', title: '社会实践与影像记录',
+    label: 'P-03', title: '社会实践与影像记录', titleLines: ['社会实践', '与影像记录'],
     summary: '在田野与社区里用影像做事，记录手艺与人之间的联系。',
     body: ['参与 2025 年三下乡项目《锦绣连山，针线间的壮乡记忆》，项目获评省级“优秀”。'],
     media: [{ src: practiceImage('fieldwork.jpg'), alt: '三下乡社会实践影像记录现场', fit: 'cover' }],
     links: [],
+  },
+  {
+    label: 'P-04', title: '影石校园影像创作者', titleLines: ['影石校园', '影像创作者'],
+    summary: '以在校创作者的身份用上影石全系列影像设备，把校园、旅途与运动现场拍成可以分享的内容。',
+    body: [
+      '2025 年入选影石 Insta360 校园影像创作者计划，成为该计划面向全国高校招募的校园创作者之一。',
+      '计划期间完整体验了影石的三条主力产品线：全景相机 X 系列、拇指相机 GO 系列与旗舰运动相机 Ace Pro 系列，覆盖 8K 全景、第一人称随身视角与昼夜运动画面三类拍法。',
+      '围绕校园日常、旅途与运动场景输出共创内容，从挑机位、现场拍摄，到在影石 App 里完成取景与剪辑，把整个使用过程整理成图文与短片，在小红书「曦熙子柒」分享给更多同学。',
+    ],
+    layout: 'trio',
+    media: [
+      { src: practiceImage('insta360-x-series.png'), alt: '影石Insta360 X5 全景相机', caption: 'X 系列 · 8K 全景，先拍后取景', fit: 'contain' },
+      { src: practiceImage('insta360-go-series.png'), alt: '影石Insta360 GO Ultra 拇指相机', caption: 'GO 系列 · 拇指机身，第一人称随身视角', fit: 'contain' },
+      { src: practiceImage('insta360-ace-pro-series.png'), alt: '影石Insta360 Ace Pro 2 运动相机', caption: 'Ace Pro 系列 · 与徕卡联合研发，昼夜运动画面', fit: 'contain' },
+    ],
+    links: [{ label: '小红书「曦熙子柒」', href: 'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818' }],
   },
 ];
 

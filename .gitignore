@@ -1,5 +1,7 @@
 node_modules
 dist
+# Vite 加载 vite.config.js 时生成，通常会自动删除；本机安全删除拦截会导致残留
+vite.config.js.timestamp-*
 .superpowers
 .claude
 .env

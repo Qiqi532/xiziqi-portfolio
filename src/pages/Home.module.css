@@ -51,7 +51,7 @@
 .record p{margin:18px 0 24px}
 .record a{font-size:.88rem}
 .sectionLink{margin-top:34px}
-.practiceGrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--color-line)}
+.practiceGrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-line)}
 .practiceGrid article{padding:30px 28px;border-right:1px solid var(--color-line)}
 .practiceGrid article:last-child{border:0}
 .practiceGrid span{margin-bottom:18px}
@@ -75,6 +75,13 @@
 .contact{padding:100px 0;background:var(--color-ink);color:var(--color-mist)}
 .contact>div>span{color:#9fb1ba}
 .contact h2{color:var(--color-paper);max-width:760px;margin-bottom:30px}
+
+@media(max-width:1024px){
+  .practiceGrid{grid-template-columns:repeat(2,1fr)}
+  .practiceGrid article{border-bottom:1px solid var(--color-line)}
+  .practiceGrid article:nth-child(2n){border-right:0}
+  .practiceGrid article:nth-child(n+3){border-bottom:0}
+}
 
 @media(max-width:840px){
   .hero{min-height:auto}

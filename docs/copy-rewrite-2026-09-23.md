@@ -196,3 +196,15 @@
   1. `Home.jsx` 首屏把 `profile.role` 从 `{role}。{introduction}` 的拼接中拆出，改为独立小标签渲染；`Home.module.css` 新增 `.role` 规则，并把 `.lead` 的 `margin-top` 由 28px 收到 14px。
   2. `profile.introduction` 首句改为「2023 年进入中山大学，2027 年将赴南京大学继续深造。」——保留两校名（首屏需要让访客知道是哪两所学校），只去掉「物理学院」这一院系指向。
 - 视觉核对：无头 Chrome 截图确认首屏、01/02 板块、研究页 R-01~R-05 与技能分组、实践页、关于页均无版式异常。首屏 h1 在新文案下折为三行，字号与断行位置正常。
+
+## 八、上线记录
+
+提交 `ae488bb`，两个平台均已部署并完成线上验证：
+
+| 平台 | 地址 | 结果 |
+|---|---|---|
+| Cloudflare Pages | https://xiziqi-portfolio.pages.dev | wrangler CLI 直传 `dist`（`base='/'`），部署 `35db0d62`，Environment=Production / Branch=main / Source=ae488bb；首屏截图已确认新文案生效 |
+| GitHub Pages | https://qiqi532.github.io/xiziqi-portfolio/ | `git push origin master` 触发 Actions（`VITE_BASE=/xiziqi-portfolio/`）；产物 `assets/index-DWLHHqYU.js` 中已含新文案、旧文案已消失，渲染与 Cloudflare 一致 |
+
+> 推送备注：本机出口代理对 `git push` 的 CONNECT 有间歇性拦截（`CONNECT tunnel failed, response 502`），单纯重试与「沙箱外执行」均无效；改用
+> `git -c http.version=HTTP/1.1 -c pack.threads=1 push --no-thin origin master` 后一次通过。
