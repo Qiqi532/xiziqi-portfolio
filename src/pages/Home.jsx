@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactLinks from '../components/ContactLinks';
 import HeroCarousel from '../components/HeroCarousel';
+import PhotographyCreator from '../components/PhotographyCreator';
 import { images } from '../data/images';
 import {
   education,
@@ -173,7 +174,6 @@ export default function Home() {
           <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2>把看见的光留下来</h2></header>
           <div className={styles.photoIntro}>
             <p>{photography.lead}</p>
-            <p>{photography.social}</p>
           </div>
           <div className={styles.photoHighlights}>
             {photography.highlights.map((item) => (
@@ -183,17 +183,19 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <p className={styles.exhibitionNote}>{photography.exhibition.description}</p>
           <div className={styles.photoGrid}>
             {selectedPhotography.map((item) => {
               const selectedImage = categoryImages[item.key];
               return (
                 <Link key={item.key} to={item.href} className={styles.photoCard}>
-                  <img src={selectedImage?.thumb} alt={selectedImage?.title || item.title} loading="lazy" />
+                  <img src={selectedImage?.thumb} alt={selectedImage?.title || item.title} width={selectedImage?.width} height={selectedImage?.height} loading="lazy" />
                   <span>{item.category}</span><h3>{item.title}</h3>
                 </Link>
               );
             })}
           </div>
+          <PhotographyCreator creator={photography.creator} />
           <div className={styles.photoSkills}>
             <div><span>摄影设备</span><p>{photography.equipment.join(' · ')}</p></div>
             <div><span>后期处理</span><p>{photography.postTools.join(' · ')}</p></div>

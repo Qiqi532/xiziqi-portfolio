@@ -1,6 +1,5 @@
 .frame {
   position: relative;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
   margin: 0;
   background: var(--color-fog);
@@ -9,16 +8,12 @@
 .frame > img,
 .fallback {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
 }
 
-.cover {
-  object-fit: cover;
-}
-
-.contain {
+.image {
   object-fit: contain;
-  padding: 18px;
+  padding: 16px;
   background: linear-gradient(145deg, #d7e1e5, var(--color-fog));
 }
 
@@ -31,8 +26,6 @@
 }
 
 .controls {
-  position: absolute;
-  inset: auto 0 0;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -40,6 +33,19 @@
   padding: 12px;
   background: rgba(248, 250, 251, .9);
   color: var(--color-ink);
+}
+
+.caption {
+  text-align: center;
+  color: var(--color-ink);
+  font-size: .85rem;
+}
+
+.caption small {
+  display: block;
+  color: var(--color-accent);
+  font-size: .65rem;
+  letter-spacing: .12em;
 }
 
 .controls button {
@@ -72,6 +78,5 @@
 @media (max-width: 840px) {
   .frame {
     width: min(100%, 640px);
-    aspect-ratio: 4 / 3;
   }
 }

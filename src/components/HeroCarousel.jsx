@@ -64,17 +64,18 @@ export default function HeroCarousel({ slides }) {
         <img
           src={current.src}
           alt={current.alt}
-          className={current.fit === 'contain' ? styles.contain : styles.cover}
+          className={styles.image}
           style={{ objectPosition: current.position }}
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchpriority={index === 0 ? 'high' : 'auto'}
           onError={markImageFailed}
         />
       )}
-      <div className={styles.controls}>
+      <figcaption className={styles.controls}>
         <button type="button" aria-label="上一张照片" onClick={() => selectSlide(index - 1)}>←</button>
+        <span className={styles.caption}>{current.location}<small>{String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</small></span>
         <button type="button" aria-label="下一张照片" onClick={() => selectSlide(index + 1)}>→</button>
-      </div>
+      </figcaption>
       <div className={styles.dots} role="group" aria-label="选择照片">
         {slides.map((slide, slideIndex) => (
           <button

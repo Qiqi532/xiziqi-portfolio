@@ -1,0 +1,127 @@
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+  gap: 44px;
+  align-items: center;
+  padding: 34px 38px;
+  margin: 34px 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(115deg, var(--color-fog), var(--color-paper));
+  text-align: left;
+}
+
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: .8rem;
+}
+
+.platform {
+  padding: 2px 9px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  background: #ce3044;
+  font-weight: 600;
+}
+
+.name {
+  color: var(--color-accent);
+  letter-spacing: .06em;
+}
+
+.intro h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.5;
+}
+
+.description {
+  max-width: 550px;
+  margin-top: 12px;
+  color: var(--color-text);
+  font-size: .88rem;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  margin-top: 18px;
+  color: var(--color-accent);
+  font-size: .74rem;
+}
+
+.topics li::before {
+  content: '# ';
+  color: #a64c5c;
+}
+
+.activity {
+  display: grid;
+  gap: 22px;
+  padding-left: 34px;
+  border-left: 1px solid var(--color-line);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.stats dt {
+  color: var(--color-accent);
+  font-size: .76rem;
+  letter-spacing: .12em;
+}
+
+.stats dd {
+  color: var(--color-ink);
+  font-family: var(--font-heading);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 8px 0;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-size: .83rem;
+}
+
+.link:hover {
+  color: #a82b3c;
+}
+
+.link span {
+  font-size: 1.15rem;
+}
+
+@media (max-width: 760px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 26px;
+  }
+
+  .activity {
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+  }
+}

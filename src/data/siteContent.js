@@ -59,11 +59,12 @@ export const education = [
 ];
 
 export const heroSlides = [
-  { src: profileImage('hero-shanghai.jpg'), alt: '黄新宏在上海旅行', location: '上海', position: '50% 48%', fit: 'cover' },
-  { src: profileImage('hero-quanzhou.jpg'), alt: '黄新宏在泉州湖边', location: '泉州', position: '50% 42%', fit: 'cover' },
-  { src: profileImage('hero-hangzhou.jpg'), alt: '黄新宏在杭州旅行', location: '杭州', position: '50% 46%', fit: 'cover' },
-  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: '50% 38%', fit: 'cover' },
-  { src: profileImage('hero-beijing.jpg'), alt: '黄新宏在北京旅行', location: '北京', position: '50% 44%', fit: 'cover' },
+  { src: profileImage('gallery/17-photography-talk.jpg'), alt: '黄新宏在摄影分享现场', location: '摄影分享现场', position: 'center', fit: 'contain' },
+  { src: profileImage('hero-shanghai.jpg'), alt: '黄新宏在上海旅行', location: '上海', position: 'center', fit: 'contain' },
+  { src: profileImage('hero-quanzhou.jpg'), alt: '黄新宏在泉州湖边', location: '泉州', position: 'center', fit: 'contain' },
+  { src: profileImage('hero-hangzhou.jpg'), alt: '黄新宏在杭州旅行', location: '杭州', position: 'center', fit: 'contain' },
+  { src: profileImage('hero-great-wall.jpg'), alt: '黄新宏在长城旅行', location: '长城', position: 'center', fit: 'contain' },
+  { src: profileImage('hero-beijing.jpg'), alt: '黄新宏在北京旅行', location: '北京', position: 'center', fit: 'contain' },
 ];
 
 export const researchProjects = [
@@ -207,10 +208,26 @@ export const selectedPhotography = [
 
 export const photography = {
   lead: '在校园、城市与旅途之间持续按下快门，留意光线、空间与人的关系。长期拍校园日常、城市风光与人像三类题材，作品见于《光明日报》与「中国国家旅游」，现为视觉中国、海丝泉州签约摄影师。',
-  social: '同时以「曦熙子柒」在小红书更新摄影与旅行内容，写校园生活、摄影攻略与旅途见闻，累计收获 1.8 万+ 获赞与收藏。',
+  exhibition: {
+    title: '珠港澳大学生摄影展',
+    distinction: '特别推荐',
+    description: '近期作品入选珠港澳大学生摄影展，并获「特别推荐」。从中大的校园光影，到港澳的城市切片与海岸风景，继续用照片记录身边与远方。',
+  },
+  partnership: {
+    title: '签约摄影师',
+    platforms: ['视觉中国', '海丝泉州'],
+    description: '从校园日常到城市风光，让镜头里的片刻走向更广阔的视野。',
+  },
+  creator: {
+    name: '曦熙子柒',
+    href: 'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818',
+    description: '把校园里的光、旅途中的风景与拍摄时的发现，整理成照片、攻略和日常记录。',
+    stats: [{ value: '1.9 万', label: '点赞' }, { value: '近 500', label: '粉丝' }],
+    topics: ['摄影作品', '校园日常', '旅行记录', '摄影攻略'],
+  },
   highlights: [
     { value: '签约摄影师', note: '视觉中国 · 海丝泉州' },
-    { value: '1.8 万+ 获赞与收藏', note: '小红书「曦熙子柒」' },
+    { value: '特别推荐', note: '珠港澳大学生摄影展' },
     { value: '长期题材', note: '校园日常 / 城市与远方 / 人与片刻' },
   ],
   equipment: ['Nikon Z5 微单相机', '奥林巴斯 OM-1 胶片相机', 'DJI Action 5 Pro', '无人机航拍'],
@@ -218,6 +235,7 @@ export const photography = {
 };
 
 export const personalGallery = [
+  { src: profileImage('gallery/17-photography-talk.jpg'), alt: '黄新宏在摄影分享现场', ratio: 'landscape', span: 'wide', position: 'center' },
   { src: profileImage('gallery/15-hong-kong.jpg'), alt: '黄新宏在香港街头', ratio: 'portrait', span: 'tall', position: '50% 45%' },
   { src: profileImage('gallery/01-fieldwork.jpg'), alt: '黄新宏参加三下乡社会实践影像记录', ratio: 'landscape', span: 'wide', position: '50% 50%' },
   { src: profileImage('gallery/11-meizhou-island.jpg'), alt: '黄新宏在湄洲岛旅行', ratio: 'portrait', span: 'tall', position: '50% 50%' },

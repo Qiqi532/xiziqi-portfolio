@@ -2,8 +2,8 @@
 .header{padding-bottom:38px;border-bottom:1px solid var(--color-line)}
 .header span,.galleryHeading span{font-size:.72rem;letter-spacing:.18em;color:var(--color-accent);white-space:nowrap}
 .intro{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:70px;padding:64px 0 90px;align-items:center}
-.leadPhoto{aspect-ratio:3/4;margin:0;overflow:hidden;background:var(--color-fog)}
-.leadPhoto img{width:100%;height:100%;object-fit:cover}
+.leadPhoto{margin:0;background:var(--color-fog)}
+.leadPhoto img{width:100%;height:auto;object-fit:contain}
 .biography h2{margin-bottom:8px}
 .biography>p{max-width:650px;margin-bottom:18px}
 .role{color:var(--color-accent)}

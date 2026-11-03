@@ -7,7 +7,10 @@ it('renders the long-form personal homepage entry points', () => {
   expect(screen.getByRole('heading', { name: '我拍下光，也想知道它从哪里来。' })).toBeInTheDocument();
   expect(screen.getByText(/2027 年将赴南京大学继续深造/)).toBeInTheDocument();
   expect(screen.getByText('SYSU → NJU · PHYSICS · LIGHT · CODE')).toBeInTheDocument();
-  expect(screen.getByRole('img', { name: /上海/ })).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: '黄新宏在摄影分享现场' })).toBeInTheDocument();
+  expect(screen.getByRole('region', { name: '小红书创作' })).toHaveTextContent('1.9 万');
+  expect(screen.getByRole('region', { name: '小红书创作' })).toHaveTextContent('近 500');
+  expect(screen.getByText('特别推荐')).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: '在两座百年学府里读书' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /中山大学/ })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /南京大学/ })).toBeInTheDocument();

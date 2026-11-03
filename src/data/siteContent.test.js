@@ -5,6 +5,7 @@ import {
   education,
   heroSlides,
   personalGallery,
+  photography,
   practiceChapters,
   profile,
   publications,
@@ -33,16 +34,17 @@ describe('public homepage content', () => {
 
   it('contains the approved homepage and personal gallery images', () => {
     expect(heroSlides.map(({ location }) => location)).toEqual([
+      '摄影分享现场',
       '上海',
       '泉州',
       '杭州',
       '长城',
       '北京',
     ]);
-    expect(heroSlides.every(({ fit }) => fit === 'cover')).toBe(true);
+    expect(heroSlides.every(({ fit }) => fit === 'contain')).toBe(true);
     expect(heroSlides.some(({ location }) => location === '香港')).toBe(false);
     expect(heroSlides.every(({ src }) => !src.includes('id-photo'))).toBe(true);
-    expect(personalGallery).toHaveLength(16);
+    expect(personalGallery).toHaveLength(17);
 
     const galleryLayout = personalGallery.map(({ src, ratio, span }) => ({
       file: src.split('/').at(-1),
@@ -51,6 +53,7 @@ describe('public homepage content', () => {
     }));
 
     expect(galleryLayout).toEqual([
+      { file: '17-photography-talk.jpg', ratio: 'landscape', span: 'wide' },
       { file: '15-hong-kong.jpg', ratio: 'portrait', span: 'tall' },
       { file: '01-fieldwork.jpg', ratio: 'landscape', span: 'wide' },
       { file: '11-meizhou-island.jpg', ratio: 'portrait', span: 'tall' },
@@ -70,6 +73,17 @@ describe('public homepage content', () => {
     ]);
 
     expect(personalGallery.every(({ featured }) => featured !== true)).toBe(true);
+  });
+
+  it('records the exhibition honour and current creator figures without invented awards', () => {
+    expect(photography.exhibition).toMatchObject({ title: '珠港澳大学生摄影展', distinction: '特别推荐' });
+    expect(photography.creator.stats).toEqual([
+      { value: '1.9 万', label: '点赞' },
+      { value: '近 500', label: '粉丝' },
+    ]);
+    expect(photography.partnership.platforms).toEqual(['视觉中国', '海丝泉州']);
+    expect(photography.creator.href).toBe(contactChannels.xiaohongshu.href);
+    expect(JSON.stringify(photography)).not.toContain('1.8 万');
   });
 
   it('records the two-stage education background with school facts rather than research', () => {

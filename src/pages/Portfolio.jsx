@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Gallery from '../components/Gallery';
 import Lightbox from '../components/Lightbox';
+import PhotographyCreator from '../components/PhotographyCreator';
+import { photography } from '../data/siteContent';
 import styles from './Portfolio.module.css';
 
 const fadeUp = {
@@ -20,9 +22,32 @@ export default function Portfolio() {
           <h1>摄影</h1>
           <hr className="section-divider" />
           <p className={styles.subtitle}>
-            在校园、城市与旅途之间，记录光线，也记录人与空间的关系。现为视觉中国、海丝泉州签约摄影师，小红书「曦熙子柒」持续更新摄影与旅行内容。
+            在校园、城市与旅途之间，记录光线，也记录人与空间的关系。
           </p>
         </motion.div>
+
+        <div className={styles.credentials}>
+          <section className={styles.exhibition} aria-labelledby="exhibition-title">
+            <span className={styles.eyebrow}>01 / EXHIBITION</span>
+            <h2 id="exhibition-title">{photography.exhibition.title}</h2>
+            <p>{photography.exhibition.description}</p>
+            <div className={styles.award}>
+              <span aria-hidden="true">✧</span>
+              <strong>{photography.exhibition.distinction}</strong>
+              <small>摄影展荣誉</small>
+            </div>
+          </section>
+          <section className={styles.partnership} aria-labelledby="partnership-title">
+            <span className={styles.eyebrow}>02 / PHOTOGRAPHER</span>
+            <h2 id="partnership-title">{photography.partnership.title}</h2>
+            <ul className={styles.partners}>
+              {photography.partnership.platforms.map((platform) => (
+                <li key={platform}><span aria-hidden="true">◈</span>{platform}<small>签约摄影师</small></li>
+              ))}
+            </ul>
+            <p>{photography.partnership.description}</p>
+          </section>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -31,6 +56,7 @@ export default function Portfolio() {
         >
           <Gallery onImageClick={(img) => setLightboxImage(img)} />
         </motion.div>
+        <PhotographyCreator creator={photography.creator} />
       </div>
 
       {lightboxImage && (
