@@ -7,7 +7,7 @@ it('renders an editorial homepage while preserving the detailed school records',
   const introduction = screen.getByRole('heading', { level: 1, name: /中山大学.*南京大学/ }).closest('section');
   expect(within(introduction).getByRole('heading', { level: 1 })).toBeInTheDocument();
   expect(within(introduction).getByText(/2027 年将赴南京大学继续深造/)).toBeInTheDocument();
-  expect(within(introduction).getByRole('link', { name: /了解教育背景/ })).toHaveAttribute('href', '#education');
+  expect(within(introduction).queryByRole('link', { name: /了解教育背景|了解研究方向/ })).not.toBeInTheDocument();
   expect(screen.getByRole('region', { name: '教育背景' })).toHaveAttribute('id', 'education');
   expect(screen.getByText('SYSU → NJU · PHYSICS · LIGHT · CODE')).toBeInTheDocument();
   expect(screen.getByRole('img', { name: '黄新宏在摄影分享现场' })).toBeInTheDocument();

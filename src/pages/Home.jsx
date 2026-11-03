@@ -27,10 +27,6 @@ export default function Home() {
             <h1 id="home-title"><span>中山大学 · 物理学</span><span>2027 年将赴南京大学深造</span></h1>
             <p className={styles.role}>{profile.role}</p>
             <p className={styles.lead}>{profile.shortIntroduction}</p>
-            <div className={styles.actions}>
-              <a href="#education" className={styles.primary}>了解教育背景 <span aria-hidden="true">↓</span></a>
-              <Link to="/research">了解研究方向 <span aria-hidden="true">↗</span></Link>
-            </div>
           </div>
           <HeroCarousel slides={heroSlides} />
         </div>
@@ -43,7 +39,7 @@ export default function Home() {
             {education.map((item) => (
               <article key={item.id} className={styles.educationCard}>
                 <div className={styles.educationTop}>
-                  <ResponsiveImage src={item.media.src} alt={item.media.alt} sizes="140px" className={styles.educationImage} />
+                  <ResponsiveImage src={item.media.src} alt={item.media.alt} sizes="(max-width: 420px) 88px, (max-width: 800px) 120px, (max-width: 1000px) 140px, 180px" className={styles.educationImage} />
                   <div>
                     <span className={styles.educationStage}>{item.stage} · {item.period}</span>
                     <h3>{item.school}<small>{item.schoolEn}</small></h3>
@@ -75,7 +71,7 @@ export default function Home() {
           <header className={styles.sectionHeader}><span>02 / SELECTED WORK</span><h2 id="work-title">最近，在做这些事</h2><p>研究、创作与记录，是我认识世界的几种方式。</p></header>
           <div className={styles.workGrid}>
             {highlights.map((item) => (
-              <Link key={item.key} to={item.href} className={`${styles.workCard} ${item.key === 'photography' ? styles.workDark : ''}`}>
+              <Link key={item.key} to={item.href} className={styles.workCard}>
                 <span className={styles.workLabel}>{item.label}</span>
                 <h3>{item.title}</h3><p>{item.summary}</p>
                 <small>{item.result}</small>
@@ -120,7 +116,7 @@ export default function Home() {
       </section>
 
       <section className={styles.contact} aria-labelledby="contact-title">
-        <div className="container"><span>05 / CONTACT</span><h2 id="contact-title">研究、影像，或一次新的合作。</h2><p>欢迎来信，聊聊正在发生的想法。</p><ContactLinks email={profile.email} light /></div>
+        <div className="container"><span>05 / CONTACT</span><h2 id="contact-title">研究、影像，或一次新的合作。</h2><p>欢迎来信，聊聊正在发生的想法。</p><ContactLinks email={profile.email} /></div>
       </section>
     </>
   );

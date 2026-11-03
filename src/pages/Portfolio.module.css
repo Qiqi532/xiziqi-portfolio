@@ -53,14 +53,11 @@
 .award strong { font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-ink); font-weight: 500; }
 .award small { font-size: .68rem; color: var(--color-accent); letter-spacing: .12em; }
 
-.partnership { background: var(--color-ink); color: var(--color-mist); border-color: var(--color-ink); }
-.partnership h2 { color: var(--color-paper); }
-.partnership .eyebrow { color: #b6c7d0; }
-.partnership p { margin-bottom: 0; color: #c3d0d6; }
+.partnership p { margin-bottom: 0; }
 .partners { margin-top: 22px; }
-.partners li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #40525d; color: var(--color-paper); font-family: var(--font-heading); font-size: 1.22rem; }
-.partners li > span { color: #b6c7d0; font-size: 1.05rem; }
-.partners small { margin-left: auto; color: #b6c7d0; font-family: var(--font-body); font-size: .65rem; letter-spacing: .08em; }
+.partners li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid var(--color-line); color: var(--color-ink); font-family: var(--font-heading); font-size: 1.22rem; }
+.partners li > span { color: var(--color-accent); font-size: 1.05rem; }
+.partners small { margin-left: auto; color: var(--color-accent); font-family: var(--font-body); font-size: .65rem; letter-spacing: .08em; }
 
 @media (max-width: 760px) {
   .credentials { grid-template-columns: 1fr; gap: 16px; }
