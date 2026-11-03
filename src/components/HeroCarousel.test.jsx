@@ -39,3 +39,25 @@ describe('HeroCarousel', () => {
     expect(screen.getByRole('img', { name: '泉州生活照' })).toBeInTheDocument();
   });
 });
+it('pauses on hover and resumes when the pointer leaves, with only previous and next controls', () => {
+  vi.useFakeTimers();
+  render(<HeroCarousel slides={slides} />);
+  const carousel = screen.getByLabelText('个人生活照片轮播');
+  expect(screen.getAllByRole('button')).toHaveLength(2);
+  expect(screen.queryByRole('button', { name: /暂停|继续/ })).not.toBeInTheDocument();
+  fireEvent.mouseEnter(carousel);
+  act(() => vi.advanceTimersByTime(10000));
+  expect(screen.getByRole('img', { name: '泉州生活照' })).toBeInTheDocument();
+  fireEvent.mouseLeave(carousel);
+  act(() => vi.advanceTimersByTime(5000));
+  expect(screen.getByRole('img', { name: '香港生活照' })).toBeInTheDocument();
+});
+
+it('keeps manual navigation available when reduced motion disables automatic rotation', () => {
+  window.matchMedia = vi.fn(() => ({ matches: true, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
+  render(<HeroCarousel slides={slides} />);
+  expect(screen.getAllByRole('button')).toHaveLength(2);
+  expect(screen.getByRole('button', { name: '下一张照片' })).toBeEnabled();
+  fireEvent.click(screen.getByRole('button', { name: '下一张照片' }));
+  expect(screen.getByRole('img', { name: '香港生活照' })).toBeInTheDocument();
+});

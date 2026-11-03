@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 import { expect, it, vi } from 'vitest';
 import Gallery from './Gallery';
 import { images } from '../data/images';
@@ -13,7 +13,33 @@ it('filters exhibition works and opens a complete vertical composition', () => {
   const cliff = screen.getByRole('img', { name: '海蚀巨壁' });
   expect(cliff.parentElement.style.aspectRatio).toBe('1800/2400');
   fireEvent.click(screen.getByRole('button', { name: '查看海蚀巨壁' }));
-  expect(onImageClick).toHaveBeenCalledWith(images.find(({ title }) => title === '海蚀巨壁'));
+  expect(onImageClick).toHaveBeenCalledWith(
+    images.find(({ title }) => title === '海蚀巨壁'),
+    images.filter(({ exhibition }) => exhibition),
+  );
+});
+
+function LocationProbe() {
+  return <output data-testid="location">{useLocation().search}</output>;
+}
+
+it('starts with a distinct selected collection and records it in the URL', async () => {
+  render(<MemoryRouter><Gallery /><LocationProbe /></MemoryRouter>);
+  await waitFor(() => expect(screen.getByTestId('location')).toHaveTextContent('category=selected'));
+  expect(screen.getByRole('button', { name: '精选' })).toHaveAttribute('aria-pressed', 'true');
+  const shown = within(screen.getByRole('region', { name: '摄影作品展廊' })).getAllByRole('img');
+  expect(shown.length).toBeLessThan(images.length);
+  expect(new Set(shown.map((image) => image.getAttribute('src'))).size).toBe(shown.length);
+  expect(screen.queryByRole('img', { name: '摄影分享现场' })).not.toBeInTheDocument();
+  expect(within(screen.getByRole('region', { name: '摄影作品展廊' })).getByRole('status')).toHaveTextContent(`精选 · ${shown.length} 张`);
+});
+
+it('recovers an invalid category as all photos without discarding other query parameters', async () => {
+  render(<MemoryRouter initialEntries={['/portfolio?category=missing&from=home']}><Gallery /><LocationProbe /></MemoryRouter>);
+  await waitFor(() => expect(screen.getByTestId('location')).toHaveTextContent('category=all'));
+  expect(screen.getByTestId('location')).toHaveTextContent('from=home');
+  expect(screen.getByRole('button', { name: '全部' })).toHaveAttribute('aria-pressed', 'true');
+  expect(within(screen.getByRole('region', { name: '摄影作品展廊' })).getAllByRole('img')).toHaveLength(images.length);
 });
 
 it('switches to personal photos with the new sharing portrait', async () => {

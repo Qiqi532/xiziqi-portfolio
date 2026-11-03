@@ -4,9 +4,11 @@
   z-index: 2000;
   background: rgba(0, 0, 0, 0.92);
   display: flex;
+  flex-direction: column;
+  gap: 18px;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 72px 24px 24px;
   cursor: zoom-out;
 }
 
@@ -33,35 +35,39 @@
 }
 
 .arrow {
-  position: fixed;
-  top: 50%;
-  z-index: 2001;
-  width: 56px;
-  height: 56px;
+  min-width: 112px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  gap: 12px;
+  padding: 8px 18px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: none;
   cursor: pointer;
   transition: background 0.2s ease;
-  transform: translateY(-50%);
 }
 
 .arrow:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.prev { left: 16px; }
-.next { right: 16px; }
+.arrow:disabled { opacity: .35; cursor: default; }
+.navigation { display: flex; gap: 16px; }
 
 .imageContainer {
   position: relative;
-  max-width: 90vw;
-  max-height: 85vh;
+  width: min(100%, 1800px);
   cursor: default;
+}
+
+.viewport {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 120px;
 }
 
 .spinner {
@@ -78,8 +84,11 @@
 }
 
 .image {
-  max-width: 90vw;
-  max-height: 85vh;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 220px);
+  max-height: calc(100dvh - 220px);
   object-fit: contain;
   border-radius: 4px;
   opacity: 0;
@@ -94,6 +103,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   padding: 12px 4px 0;
   color: white;
 }
@@ -105,22 +115,40 @@
 }
 
 .counter {
+  flex-shrink: 0;
   font-size: 0.8rem;
-  opacity: 0.5;
+  opacity: 0.75;
   font-weight: 300;
 }
+
+.error {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  width: min(100%, 620px);
+  min-height: 220px;
+  padding: 32px;
+  color: white;
+  background: rgba(255, 255, 255, .06);
+}
+
+.error button { min-height: 44px; padding: 8px 16px; border: 1px solid rgba(255, 255, 255, .5); color: white; }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
 @media (max-width: 768px) {
-  .arrow {
-    display: none;
-  }
+  .overlay { padding: 66px 16px 20px; }
+  .captionTitle { font-size: .95rem; }
 
   .close {
     top: 12px;
     right: 12px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+  .image { transition: none; }
 }

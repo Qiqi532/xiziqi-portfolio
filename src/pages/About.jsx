@@ -1,4 +1,5 @@
 import ContactLinks from '../components/ContactLinks';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { personalGallery, profile } from '../data/siteContent';
 import styles from './About.module.css';
 
@@ -12,18 +13,21 @@ export default function About() {
 
         <div className={styles.intro}>
           <figure className={styles.leadPhoto} data-testid="personal-photo">
-            <img
+            <ResponsiveImage
               src={leadPhoto.src}
               alt={leadPhoto.alt}
               data-featured="true"
+              sizes="(max-width: 760px) calc(100vw - 40px), 440px"
+              loading="eager"
               style={{ objectPosition: leadPhoto.position }}
             />
+            <figcaption>{leadPhoto.alt}</figcaption>
           </figure>
           <div className={styles.biography}>
             <h2>{profile.name}</h2>
             <p className={styles.role}>{profile.role}</p>
             <p>{profile.introduction}</p>
-            <p>我习惯把问题拆开来看，也习惯用相机把光留下来。这里放着我在做的研究、走过的现场，和一路拍下的照片。</p>
+            <p>读物理，也做开发和摄影。这里记录我的研究、参与过的实践，以及校园与旅途中的日常。</p>
             <ContactLinks email={profile.email} />
           </div>
         </div>
@@ -38,15 +42,17 @@ export default function About() {
             {galleryPhotos.map((photo) => (
               <figure
                 key={photo.src}
-                className={`${styles.photo} ${styles[photo.span]}`}
+                className={styles.photo}
                 data-testid="personal-photo"
               >
-                <img
+                <ResponsiveImage
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
+                  sizes="(max-width: 620px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px"
                   style={{ objectPosition: photo.position }}
                 />
+                <figcaption>{photo.alt}</figcaption>
               </figure>
             ))}
           </div>

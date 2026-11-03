@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { copyFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { pageMetadata, notFoundMetadata } from './src/data/pageMetadata.js';
+import { renderPageMetadata } from './scripts/staticMetadata.js';
 
 // 站点路由（与 src/App.jsx 保持一致）
 const ROUTES = ['research', 'practice', 'portfolio', 'about'];
@@ -13,12 +15,16 @@ const ROUTES = ['research', 'practice', 'portfolio', 'about'];
  */
 const spaFallback = () => ({
   name: 'spa-static-fallback',
+  transformIndexHtml(html) {
+    return renderPageMetadata(html, pageMetadata['/'], siteUrl, shareImage);
+  },
   closeBundle() {
-    copyFileSync('dist/index.html', 'dist/404.html');
+    const html = readFileSync('dist/index.html', 'utf8');
+    writeFileSync('dist/404.html', renderPageMetadata(html, notFoundMetadata, new URL('404.html', siteUrl).href, shareImage));
     for (const route of ROUTES) {
       const dir = `dist/${route}`;
       if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-      copyFileSync('dist/index.html', `${dir}/index.html`);
+      writeFileSync(`${dir}/index.html`, renderPageMetadata(html, pageMetadata[`/${route}`], new URL(`${route}/`, siteUrl).href, shareImage));
     }
   },
 });
@@ -27,6 +33,8 @@ const spaFallback = () => ({
 // 若部署到「项目型子路径」（如 GitHub Pages 的 /repo-name/），构建时传入 VITE_BASE：
 //   VITE_BASE=/xiziqi-portfolio/ npm run build
 const base = process.env.VITE_BASE || '/';
+const siteUrl = process.env.VITE_SITE_URL || (base === '/' ? 'https://xiziqi-portfolio.pages.dev/' : `https://qiqi532.github.io${base}`);
+const shareImage = new URL('images/profile/gallery/17-photography-talk.jpg', siteUrl).href;
 
 export default defineConfig({
   plugins: [react(), spaFallback()],

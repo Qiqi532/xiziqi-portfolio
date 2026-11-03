@@ -1,215 +1,126 @@
 import { Fragment } from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactLinks from '../components/ContactLinks';
 import HeroCarousel from '../components/HeroCarousel';
 import PhotographyCreator from '../components/PhotographyCreator';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { images } from '../data/images';
-import {
-  education,
-  heroSlides,
-  photography,
-  practiceChapters,
-  profile,
-  researchProjects,
-  selectedPhotography,
-} from '../data/siteContent';
+import { education, heroSlides, photography, practiceChapters, profile, publications, selectedPhotography } from '../data/siteContent';
 import styles from './Home.module.css';
 
-const reveal = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-};
-
-const categoryImages = Object.fromEntries(
-  ['campus', 'landscape', 'portrait'].map((key) => [key, images.find((item) => item.category === key)]),
-);
-
-const featuredProjects = [
-  researchProjects.find((p) => p.id === 'optical-sensing'),
-  researchProjects.find((p) => p.id === 'physics-research-intelligence'),
-  researchProjects.find((p) => p.id === 'lumina-select'),
-  researchProjects.find((p) => p.id === 'peculiar-stars'),
-].filter(Boolean);
+const featuredPhotos = images.filter((image) => image.exhibition).slice(0, 6);
+const highlights = [
+  { key: 'research', label: '01 / PHYSICS', title: '从光纤到星光', summary: '研究光纤传感，也从恒星光谱里寻找物理线索。', result: `${publications.length} 篇论文 · 持续推进物理研究`, href: '/research', link: '进入研究学习页' },
+  { key: 'development', label: '02 / DEVELOPMENT', title: '把想法写成工具', summary: '为物理论文阅读和摄影选片，独立开发自己需要的工具。', result: 'Physics Research Intelligence · Lumina Select', href: '/research#development-projects', link: '看看独立开发项目' },
+  { key: 'photography', label: '03 / PHOTOGRAPHY', title: '在镜头里记录光', summary: '拍校园、城市与人，收下日常和旅途中值得停留的片刻。', result: '珠港澳大学生摄影展 · 特别推荐', href: '/portfolio?category=exhibition', link: '浏览近期入展作品' },
+];
 
 export default function Home() {
   return (
     <>
-      <section className={styles.hero}>
+      <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.grid} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
             <span className={styles.index}>SYSU → NJU · PHYSICS · LIGHT · CODE</span>
-            <p className={styles.name}>{profile.name} <small>{profile.englishName}</small></p>
-            <h1>{profile.statement}</h1>
+            <p className={styles.name}>{profile.name}<small>{profile.englishName}</small></p>
+            <h1 id="home-title"><span>中山大学 · 物理学</span><span>2027 年将赴南京大学深造</span></h1>
             <p className={styles.role}>{profile.role}</p>
-            <p className={styles.lead}>{profile.introduction}</p>
+            <p className={styles.lead}>{profile.shortIntroduction}</p>
             <div className={styles.actions}>
-              <Link to="/research">了解研究方向</Link>
-              <Link to="/portfolio" className={styles.secondary}>浏览摄影作品</Link>
+              <a href="#education" className={styles.primary}>了解教育背景 <span aria-hidden="true">↓</span></a>
+              <Link to="/research">了解研究方向 <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
           <HeroCarousel slides={heroSlides} />
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="education-title">
+      <section id="education" className={`${styles.section} ${styles.educationSection}`} aria-labelledby="education-title">
         <div className="container">
-          <header className={styles.sectionHeader}>
-            <span>01 / EDUCATION</span>
-            <h2 id="education-title">在两座百年学府里读书</h2>
-          </header>
-          <p className={styles.educationLead}>
-            两所学校都肇始于二十世纪初，也都把基础学科放在核心位置。下面是两校的办学脉络、校训与公开排名。
-          </p>
+          <header className={styles.sectionHeader}><span>01 / EDUCATION</span><h2 id="education-title">教育背景</h2><p>从中山大学出发，2027 年将赴南京大学继续深造。</p></header>
           <div className={styles.educationGrid}>
-            {education.map((item, index) => (
-              <motion.article
-                key={item.id}
-                className={styles.educationCard}
-                {...reveal}
-                transition={{ delay: index * 0.08 }}
-              >
-                <div className={styles.educationMedia}>
-                  <img
-                    src={item.media.src}
-                    alt={item.media.alt}
-                    loading="lazy"
-                    style={{ objectPosition: item.media.position }}
-                  />
-                  <span className={styles.educationStage}>{item.stage}</span>
-                </div>
-                <div className={styles.educationBody}>
-                  <div className={styles.educationMeta}>
-                    <span>{item.period}</span>
-                    <span>{item.degree}</span>
+            {education.map((item) => (
+              <article key={item.id} className={styles.educationCard}>
+                <div className={styles.educationTop}>
+                  <ResponsiveImage src={item.media.src} alt={item.media.alt} sizes="140px" className={styles.educationImage} />
+                  <div>
+                    <span className={styles.educationStage}>{item.stage} · {item.period}</span>
+                    <h3>{item.school}<small>{item.schoolEn}</small></h3>
+                    <p>{item.college} · {item.major}</p>
+                    <span className={styles.educationDegree}>{item.degree}</span>
                   </div>
-                  <h3>
-                    {item.school}
-                    <small className={styles.educationEn}>{item.schoolEn}</small>
-                  </h3>
-                  <p className={styles.educationProgram}>{item.college} · {item.major}</p>
-                  <div className={styles.educationDiscipline}>
-                    <span>{item.discipline.label} · {item.discipline.subject}</span>
-                    <strong>{item.discipline.grade}</strong>
-                  </div>
-                  <ul className={styles.educationTags}>
-                    {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
-                  </ul>
-                  <figure className={styles.educationMotto}>
-                    <figcaption>校训</figcaption>
-                    <p>{item.motto}</p>
-                    <small>{item.mottoNote}</small>
-                  </figure>
-                  <p className={styles.educationNote}>{item.note}</p>
-                  <ul className={styles.educationRankings}>
-                    {item.rankings.map((ranking) => (
-                      <li key={`${ranking.label}-${ranking.year}`}>
-                        <span className={styles.educationRankLabel}>
-                          {ranking.label}<i>{ranking.year}</i>
-                        </span>
-                        <span className={styles.educationRankValue}>{ranking.value}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </motion.article>
+                <div className={styles.educationCredentials}>
+                  <ul className={styles.educationTags}>{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+                  <div className={styles.educationDiscipline}><span>{item.discipline.label} · {item.discipline.subject}</span><strong>{item.discipline.grade}</strong></div>
+                </div>
+                <details className={styles.schoolDetails}>
+                  <summary>校史、校训与公开资料 <span aria-hidden="true">＋</span></summary>
+                  <div className={styles.schoolDetailsBody}>
+                    <figure className={styles.educationMotto}><figcaption>校训</figcaption><p>{item.motto}</p><small>{item.mottoNote}</small></figure>
+                    <p>{item.note}</p>
+                    <ul className={styles.educationRankings}>{item.rankings.map((ranking) => <li key={ranking.label}><span>{ranking.label} <small>{ranking.year}</small></span><strong>{ranking.value}</strong></li>)}</ul>
+                  </div>
+                </details>
+              </article>
             ))}
           </div>
-          <p className={styles.educationFootnote}>
-            排名取自 2026 软科世界大学学术排名、2027 QS 世界大学排名与 2026 泰晤士高等教育世界大学排名；学科评估为教育部学位与研究生教育发展中心第五轮评估结果，完整名单未统一公开发布，此处依据学校官方公开口径整理。
-          </p>
+          <p className={styles.educationFootnote}>排名取自 2026 软科世界大学学术排名、2027 QS 世界大学排名与 2026 泰晤士高等教育世界大学排名；学科评估为教育部学位与研究生教育发展中心第五轮评估结果，完整名单未统一公开发布，此处依据学校官方公开口径整理。</p>
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section className={styles.workSection} aria-labelledby="work-title">
         <div className="container">
-          <header className={styles.sectionHeader}><span>02 / RESEARCH</span><h2>把问题拆到可以测量的地方</h2></header>
-          <div className={styles.twoCol}>
-            {featuredProjects.map((project) => (
-              <motion.article key={project.id} className={styles.record} {...reveal}>
-                <span>{project.label} · {project.status}</span>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                {project.external ? (
-                  <a href={project.href} target="_blank" rel="noreferrer">
-                    {project.linkLabel || '访问 GitHub 仓库 ↗'}
-                  </a>
-                ) : (
-                  <Link to={project.href}>查看项目细节 →</Link>
-                )}
-              </motion.article>
+          <header className={styles.sectionHeader}><span>02 / SELECTED WORK</span><h2 id="work-title">最近，在做这些事</h2><p>研究、创作与记录，是我认识世界的几种方式。</p></header>
+          <div className={styles.workGrid}>
+            {highlights.map((item) => (
+              <Link key={item.key} to={item.href} className={`${styles.workCard} ${item.key === 'photography' ? styles.workDark : ''}`}>
+                <span className={styles.workLabel}>{item.label}</span>
+                <h3>{item.title}</h3><p>{item.summary}</p>
+                <small>{item.result}</small>
+                <span className={styles.workLink}>{item.link}<span aria-hidden="true">↗</span></span>
+              </Link>
             ))}
           </div>
-          <Link className={styles.sectionLink} to="/research">进入研究学习页</Link>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.muted}`}>
+      <section className={styles.section} aria-labelledby="photography-title">
         <div className="container">
-          <header className={styles.sectionHeader}><span>03 / PRACTICE</span><h2>在真实现场，做具体的事</h2></header>
-          <div className={styles.practiceGrid}>
-            {practiceChapters.map((item) => (
-              <motion.article key={item.label} {...reveal}>
-                <span>{item.label}</span>
-                <h3>
-                  {(item.titleLines || [item.title]).map((line, index) => (
-                    <Fragment key={line}>
-                      {index > 0 ? <br /> : null}
-                      {line}
-                    </Fragment>
-                  ))}
-                </h3>
-                <p>{item.summary}</p>
-              </motion.article>
-            ))}
-          </div>
-          <Link className={styles.sectionLink} to="/practice">进入个人实践页</Link>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className="container">
-          <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2>把看见的光留下来</h2></header>
-          <div className={styles.photoIntro}>
-            <p>{photography.lead}</p>
-          </div>
-          <div className={styles.photoHighlights}>
-            {photography.highlights.map((item) => (
-              <div key={item.note} className={styles.photoHighlight}>
-                <strong>{item.value}</strong>
-                <span>{item.note}</span>
-              </div>
-            ))}
-          </div>
-          <p className={styles.exhibitionNote}>{photography.exhibition.description}</p>
+          <header className={styles.sectionHeader}><span>03 / PHOTOGRAPHY</span><h2 id="photography-title">把看见的光留下来</h2><p>校园里的清晨，海岸边的风，以及城市中一闪而过的片刻。</p></header>
+          <div className={styles.photoHeading}><p>{photography.lead}</p><Link to="/portfolio?category=exhibition">入展作品 · 特别推荐 <span aria-hidden="true">↗</span></Link></div>
           <div className={styles.photoGrid}>
-            {selectedPhotography.map((item) => {
-              const selectedImage = categoryImages[item.key];
-              return (
-                <Link key={item.key} to={item.href} className={styles.photoCard}>
-                  <img src={selectedImage?.thumb} alt={selectedImage?.title || item.title} width={selectedImage?.width} height={selectedImage?.height} loading="lazy" />
-                  <span>{item.category}</span><h3>{item.title}</h3>
-                </Link>
-              );
-            })}
+            {featuredPhotos.map((photo) => (
+              <Link key={photo.id} to="/portfolio?category=exhibition" className={styles.photoCard}>
+                <ResponsiveImage src={photo.src} alt={photo.title} sizes="(max-width: 640px) 45vw, 33vw" />
+                <span>{photo.title}<span aria-hidden="true">↗</span></span>
+              </Link>
+            ))}
           </div>
+          <div className={styles.photoCategories}>{selectedPhotography.map((item) => <Link key={item.key} to={item.href}>{item.title} <span aria-hidden="true">→</span></Link>)}</div>
           <PhotographyCreator creator={photography.creator} />
-          <div className={styles.photoSkills}>
-            <div><span>摄影设备</span><p>{photography.equipment.join(' · ')}</p></div>
-            <div><span>后期处理</span><p>{photography.postTools.join(' · ')}</p></div>
-          </div>
-          <Link className={styles.sectionLink} to="/portfolio">浏览全部摄影作品</Link>
+          <details className={styles.photoTools}><summary>摄影设备与后期工具</summary><p>{photography.equipment.join(' · ')}</p><p>{photography.postTools.join(' · ')}</p></details>
+          <Link className={styles.sectionLink} to="/portfolio">浏览全部摄影作品 <span aria-hidden="true">→</span></Link>
         </div>
       </section>
 
-      <section className={styles.contact}>
+      <section className={`${styles.section} ${styles.muted}`} aria-labelledby="practice-title">
         <div className="container">
-          <span>05 / CONTACT</span>
-          <h2>想聊研究、影像，或一次合作，欢迎来信。</h2>
-          <ContactLinks email={profile.email} light />
+          <header className={styles.sectionHeader}><span>04 / PRACTICE</span><h2 id="practice-title">在真实现场，做具体的事</h2><p>在校园媒体、志愿服务与社会实践中，把想法变成行动。</p></header>
+          <div className={styles.practiceGrid}>{practiceChapters.map((item) => (
+            <article key={item.label}>
+              <span>{item.label}</span>
+              <h3>{(item.titleLines || [item.title]).map((line, index) => <Fragment key={line}>{index > 0 ? <br /> : null}{line}</Fragment>)}</h3>
+              <p>{item.summary}</p>
+            </article>
+          ))}</div>
+          <Link className={styles.sectionLink} to="/practice">进入个人实践页 <span aria-hidden="true">→</span></Link>
         </div>
+      </section>
+
+      <section className={styles.contact} aria-labelledby="contact-title">
+        <div className="container"><span>05 / CONTACT</span><h2 id="contact-title">研究、影像，或一次新的合作。</h2><p>欢迎来信，聊聊正在发生的想法。</p><ContactLinks email={profile.email} light /></div>
       </section>
     </>
   );

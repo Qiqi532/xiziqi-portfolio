@@ -186,6 +186,9 @@ describe('public homepage content', () => {
     expect(insta360.media.every(({ fit }) => fit === 'contain')).toBe(true);
     expect(insta360.media.every(({ src }) => src.includes('/images/practice/insta360-'))).toBe(true);
     expect(insta360.media.every(({ caption }) => Boolean(caption))).toBe(true);
+    expect(insta360.body.join(' ')).toContain('GO 系列拇指相机');
+    expect(insta360.media[1].alt).toBe('影石Insta360 GO 系列拇指相机');
+    expect(JSON.stringify(insta360)).not.toMatch(/Nano|全系列|GO Ultra/i);
     expect(contactChannels.xiaohongshu.href).toBe(
       'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818',
     );

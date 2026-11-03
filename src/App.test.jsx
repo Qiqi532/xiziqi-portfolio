@@ -10,7 +10,14 @@ it('renders the five public routes in navigation', () => {
   expect(screen.queryByText('Guestbook')).not.toBeInTheDocument();
 });
 
-it('redirects the legacy contact route to about', () => {
+it('redirects the legacy contact route to about', async () => {
   render(<MemoryRouter initialEntries={['/contact']}><App /></MemoryRouter>);
-  expect(screen.getByRole('heading', { name: '关于' })).toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: '关于' })).toBeInTheDocument();
+});
+
+it('shows a useful recovery route for an unknown address', async () => {
+  render(<MemoryRouter initialEntries={['/missing-page']}><App /></MemoryRouter>);
+  expect(await screen.findByRole('heading', { name: '这条路还没有留下足迹。' })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /返回主页/ })).toHaveAttribute('href', '/');
+  expect(document.title).toBe('页面未找到｜黄新宏');
 });

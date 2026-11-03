@@ -9,6 +9,7 @@ export const profile = {
   englishName: 'Xinhong Huang',
   role: '学生 · 摄影爱好者 · 独立开发者',
   statement: '我拍下光，也想知道它从哪里来。',
+  shortIntroduction: '我在中山大学学习物理，2027 年将赴南京大学继续深造。课业之外，做研究与独立开发，也用相机记录校园和远方。',
   introduction: '2023 年进入中山大学，2027 年将赴南京大学继续深造。两所学校都肇始于二十世纪初，也都把基础学科放在核心位置。我在两座校园里读书，在校园媒体与志愿服务里做事，也用相机收下沿途的光。',
   email: 'huangxh89@mail2.sysu.edu.cn',
 };
@@ -184,16 +185,16 @@ export const practiceChapters = [
   },
   {
     label: 'P-04', title: '影石校园影像创作者', titleLines: ['影石校园', '影像创作者'],
-    summary: '以在校创作者的身份用上影石全系列影像设备，把校园、旅途与运动现场拍成可以分享的内容。',
+    summary: '体验影石 X、GO 与 Ace Pro 系列设备，把校园、旅途与运动现场拍成可以分享的内容。',
     body: [
       '2025 年入选影石 Insta360 校园影像创作者计划，成为该计划面向全国高校招募的校园创作者之一。',
-      '计划期间完整体验了影石的三条主力产品线：全景相机 X 系列、拇指相机 GO 系列与旗舰运动相机 Ace Pro 系列，覆盖 8K 全景、第一人称随身视角与昼夜运动画面三类拍法。',
+      '计划期间体验了影石 X 系列全景相机、GO 系列拇指相机与 Ace Pro 系列运动相机，尝试全景记录、第一人称随身视角与运动画面等不同拍法。',
       '围绕校园日常、旅途与运动场景输出共创内容，从挑机位、现场拍摄，到在影石 App 里完成取景与剪辑，把整个使用过程整理成图文与短片，在小红书「曦熙子柒」分享给更多同学。',
     ],
     layout: 'trio',
     media: [
       { src: practiceImage('insta360-x-series.png'), alt: '影石Insta360 X5 全景相机', caption: 'X 系列 · 8K 全景，先拍后取景', fit: 'contain' },
-      { src: practiceImage('insta360-go-series.png'), alt: '影石Insta360 GO Ultra 拇指相机', caption: 'GO 系列 · 拇指机身，第一人称随身视角', fit: 'contain' },
+      { src: practiceImage('insta360-go-series.png'), alt: '影石Insta360 GO 系列拇指相机', caption: 'GO 系列 · 第一人称随身视角', fit: 'contain' },
       { src: practiceImage('insta360-ace-pro-series.png'), alt: '影石Insta360 Ace Pro 2 运动相机', caption: 'Ace Pro 系列 · 与徕卡联合研发，昼夜运动画面', fit: 'contain' },
     ],
     links: [{ label: '小红书「曦熙子柒」', href: 'https://www.xiaohongshu.com/user/profile/64afebdd000000001f004818' }],

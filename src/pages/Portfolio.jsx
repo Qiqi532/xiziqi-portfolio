@@ -13,7 +13,7 @@ const fadeUp = {
 };
 
 export default function Portfolio() {
-  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
 
   return (
     <div className={styles.page}>
@@ -54,15 +54,16 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <Gallery onImageClick={(img) => setLightboxImage(img)} />
+          <Gallery onImageClick={(image, collection) => setLightbox({ image, collection })} />
         </motion.div>
         <PhotographyCreator creator={photography.creator} />
       </div>
 
-      {lightboxImage && (
+      {lightbox && (
         <Lightbox
-          image={lightboxImage}
-          onClose={() => setLightboxImage(null)}
+          image={lightbox.image}
+          collection={lightbox.collection}
+          onClose={() => setLightbox(null)}
         />
       )}
     </div>

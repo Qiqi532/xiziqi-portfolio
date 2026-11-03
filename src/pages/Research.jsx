@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { competitions, publications, researchProjects, skillGroups } from '../data/siteContent';
 import styles from './Research.module.css';
 
@@ -8,6 +9,28 @@ const reveal = {
   viewport: { once: true, margin: '-60px' },
 };
 
+const physicsProjectIds = new Set(['optical-sensing', 'peculiar-stars']);
+const projectGroups = [
+  {
+    id: 'physics-projects', label: '01 / PHYSICS', title: '物理研究',
+    description: '围绕光纤传感与恒星光谱，在实验测量、数据计算和物理解释之间寻找答案。',
+    projects: researchProjects.filter(({ id }) => physicsProjectIds.has(id)),
+  },
+  {
+    id: 'development-projects', label: '02 / DEVELOPMENT', title: '独立开发',
+    description: '从论文阅读、摄影选片到交互演示，把日常遇到的问题做成可以使用的工具。',
+    projects: researchProjects.filter(({ id }) => !physicsProjectIds.has(id)),
+  },
+];
+
+const sectionLinks = [
+  ['physics-projects', '物理研究'],
+  ['development-projects', '独立开发'],
+  ['publications', '论文'],
+  ['competitions', '奖项'],
+  ['skills', '工具'],
+];
+
 export default function Research() {
   return (
     <div className={styles.page}>
@@ -15,12 +38,20 @@ export default function Research() {
         <header className={styles.header}>
           <span>RESEARCH & LEARNING</span>
           <h1>研究学习</h1>
-          <p>从可测量的光信号到恒星光谱，在实验、计算与物理解释之间来回走。</p>
+          <p>从光纤传感到恒星光谱，用实验与计算探索物理，也用代码把日常问题做成可用的工具。</p>
         </header>
 
-        <section className={styles.projects} aria-labelledby="projects-title">
-          <h2 id="projects-title">代表项目</h2>
-          {researchProjects.map((project, index) => (
+        <nav className={styles.sectionNav} aria-label="研究学习页内导航">
+          {sectionLinks.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
+        </nav>
+
+        {projectGroups.map((group) => (
+          <section key={group.id} id={group.id} className={styles.projects} aria-labelledby={`${group.id}-title`}>
+            <div className={styles.sectionHeading}>
+              <span>{group.label}</span><h2 id={`${group.id}-title`}>{group.title}</h2>
+            </div>
+            <p className={styles.groupDescription}>{group.description}</p>
+            {group.projects.map((project, index) => (
             <motion.article
               id={project.id}
               key={project.id}
@@ -30,12 +61,18 @@ export default function Research() {
             >
               <div className={styles.projectCopy}>
                 <div className={styles.projectMeta}>
-                  <span>{project.label}</span><span>{project.period}</span><span>{project.status}</span>
+                  <span>{project.label}</span><span>{project.period}</span>
                 </div>
                 <h3>{project.title}</h3>
                 <p>{project.summary}</p>
-                <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-                <p className={styles.contribution}>{project.contribution}</p>
+                <dl className={styles.projectFacts}>
+                  <div><dt>我的工作</dt><dd>{project.contribution}</dd></div>
+                  <div><dt>项目进展</dt><dd>{project.status}</dd></div>
+                </dl>
+                <details className={styles.methodDetails}>
+                  <summary>展开方法与实现</summary>
+                  <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                </details>
                 {project.external && (
                   <a href={project.href} target="_blank" rel="noreferrer" className={styles.projectLink}>
                     {project.linkLabel || '访问 GitHub 仓库 ↗'}
@@ -43,13 +80,14 @@ export default function Research() {
                 )}
               </div>
               <figure className={styles.projectMedia}>
-                <img src={project.media.src} alt={project.media.alt} loading="lazy" />
+                <ResponsiveImage src={project.media.src} alt={project.media.alt} sizes="(max-width: 980px) calc(100vw - 80px), 420px" loading="lazy" />
               </figure>
             </motion.article>
-          ))}
-        </section>
+            ))}
+          </section>
+        ))}
 
-        <section className={styles.section} aria-labelledby="publications-title">
+        <section id="publications" className={styles.section} aria-labelledby="publications-title">
           <div className={styles.sectionHeading}>
             <span>PUBLICATIONS</span><h2 id="publications-title">代表论文</h2>
           </div>
@@ -57,8 +95,8 @@ export default function Research() {
             {publications.map((publication) => (
               <article key={publication.title} className={styles.publication}>
                 <div className={styles.paperVisuals}>
-                  <img src={publication.image} alt={publication.imageAlt} loading="lazy" />
-                  <img src={publication.figure} alt={publication.figureAlt} loading="lazy" />
+                  <ResponsiveImage src={publication.image} alt={publication.imageAlt} sizes="(max-width: 760px) 32vw, 180px" loading="lazy" />
+                  <ResponsiveImage src={publication.figure} alt={publication.figureAlt} sizes="(max-width: 760px) 48vw, 300px" loading="lazy" />
                 </div>
                 <div className={styles.paperCopy}>
                   <span>{publication.authorship}</span>
@@ -71,7 +109,7 @@ export default function Research() {
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="competitions-title">
+        <section id="competitions" className={styles.section} aria-labelledby="competitions-title">
           <div className={styles.sectionHeading}>
             <span>COMPETITIONS</span><h2 id="competitions-title">竞赛与奖项</h2>
           </div>
@@ -79,7 +117,7 @@ export default function Research() {
             {competitions.map((item) => (
               <article key={item.title} className={styles.award}>
                 <a href={item.certificate} target="_blank" rel="noreferrer" aria-label={`查看${item.title}证书`}>
-                  <img src={item.certificate} alt={item.certificateAlt} loading="lazy" />
+                  <ResponsiveImage src={item.certificate} alt={item.certificateAlt} sizes="(max-width: 560px) calc(100vw - 80px), 320px" loading="lazy" />
                 </a>
                 <span>{item.year}</span>
                 <h3>{item.title}</h3>
@@ -89,7 +127,7 @@ export default function Research() {
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="skills-title">
+        <section id="skills" className={styles.section} aria-labelledby="skills-title">
           <div className={styles.sectionHeading}>
             <span>TOOLS & METHODS</span><h2 id="skills-title">工具与方法</h2>
           </div>

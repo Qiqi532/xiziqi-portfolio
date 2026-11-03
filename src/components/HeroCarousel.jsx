@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ResponsiveImage from './ResponsiveImage';
 import styles from './HeroCarousel.module.css';
 
 export default function HeroCarousel({ slides }) {
@@ -11,7 +12,8 @@ export default function HeroCarousel({ slides }) {
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   );
 
-  const current = slides[index];
+  const currentIndex = slides.length ? index % slides.length : 0;
+  const current = slides[currentIndex];
   const paused = hovered || focused || hidden || reduceMotion;
 
   useEffect(() => {
@@ -61,32 +63,23 @@ export default function HeroCarousel({ slides }) {
           <span>{current.location}</span>
         </div>
       ) : (
-        <img
+        <ResponsiveImage
+          key={current.src}
           src={current.src}
           alt={current.alt}
           className={styles.image}
           style={{ objectPosition: current.position }}
-          loading={index === 0 ? 'eager' : 'lazy'}
-          fetchpriority={index === 0 ? 'high' : 'auto'}
+          loading="eager"
+          fetchpriority={currentIndex === 0 ? 'high' : 'auto'}
+          sizes="(max-width: 840px) calc(100vw - 40px), 560px"
           onError={markImageFailed}
         />
       )}
       <figcaption className={styles.controls}>
-        <button type="button" aria-label="上一张照片" onClick={() => selectSlide(index - 1)}>←</button>
-        <span className={styles.caption}>{current.location}<small>{String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</small></span>
-        <button type="button" aria-label="下一张照片" onClick={() => selectSlide(index + 1)}>→</button>
+        <button type="button" aria-label="上一张照片" onClick={() => selectSlide(currentIndex - 1)}>←</button>
+        <span className={styles.caption}>{current.location}<small>{String(currentIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</small></span>
+        <button type="button" aria-label="下一张照片" onClick={() => selectSlide(currentIndex + 1)}>→</button>
       </figcaption>
-      <div className={styles.dots} role="group" aria-label="选择照片">
-        {slides.map((slide, slideIndex) => (
-          <button
-            type="button"
-            key={slide.src}
-            aria-label={`查看${slide.location}照片`}
-            aria-current={slideIndex === index ? 'true' : undefined}
-            onClick={() => selectSlide(slideIndex)}
-          />
-        ))}
-      </div>
     </figure>
   );
 }

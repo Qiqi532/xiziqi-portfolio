@@ -35,6 +35,34 @@
   opacity: 1;
 }
 
+.error {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--color-fog);
+  color: var(--color-accent);
+  text-align: center;
+  font-size: .78rem;
+}
+
+.error button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+  .image { transition: none; }
+}
+
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
