@@ -17,7 +17,7 @@ const projectGroups = [
     projects: researchProjects.filter(({ id }) => physicsProjectIds.has(id)),
   },
   {
-    id: 'development-projects', label: '02 / DEVELOPMENT', title: '独立开发',
+    id: 'development-projects', label: '04 / DEVELOPMENT', title: '独立开发',
     description: '从论文阅读、摄影选片到交互演示，把日常遇到的问题做成可以使用的工具。',
     projects: researchProjects.filter(({ id }) => !physicsProjectIds.has(id)),
   },
@@ -25,13 +25,59 @@ const projectGroups = [
 
 const sectionLinks = [
   ['physics-projects', '物理研究'],
-  ['development-projects', '独立开发'],
   ['publications', '论文'],
   ['competitions', '奖项'],
+  ['development-projects', '独立开发'],
   ['skills', '工具'],
 ];
 
+function ProjectSection({ group }) {
+  return (
+    <section id={group.id} className={styles.projects} aria-labelledby={`${group.id}-title`}>
+      <div className={styles.sectionHeading}>
+        <span>{group.label}</span><h2 id={`${group.id}-title`}>{group.title}</h2>
+      </div>
+      <p className={styles.groupDescription}>{group.description}</p>
+      {group.projects.map((project, index) => (
+        <motion.article
+          id={project.id}
+          key={project.id}
+          className={styles.project}
+          {...reveal}
+          transition={{ delay: index * .06 }}
+        >
+          <div className={styles.projectCopy}>
+            <div className={styles.projectMeta}>
+              <span>{project.label}</span><span>{project.period}</span>
+            </div>
+            <h3>{project.title}</h3>
+            <p>{project.summary}</p>
+            <dl className={styles.projectFacts}>
+              <div><dt>我的工作</dt><dd>{project.contribution}</dd></div>
+              <div><dt>项目进展</dt><dd>{project.status}</dd></div>
+            </dl>
+            <details className={styles.methodDetails}>
+              <summary>展开方法与实现</summary>
+              <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+            </details>
+            {project.external && (
+              <a href={project.href} target="_blank" rel="noreferrer" className={styles.projectLink}>
+                {project.linkLabel || '访问 GitHub 仓库 ↗'}
+              </a>
+            )}
+          </div>
+          <figure className={styles.projectMedia}>
+            <ResponsiveImage src={project.media.src} alt={project.media.alt} sizes="(max-width: 980px) calc(100vw - 80px), 420px" loading="lazy" />
+          </figure>
+        </motion.article>
+      ))}
+    </section>
+  );
+}
+
 export default function Research() {
+  const [physicsGroup, developmentGroup] = projectGroups;
+
   return (
     <div className={styles.page}>
       <div className="container">
@@ -45,51 +91,11 @@ export default function Research() {
           {sectionLinks.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
         </nav>
 
-        {projectGroups.map((group) => (
-          <section key={group.id} id={group.id} className={styles.projects} aria-labelledby={`${group.id}-title`}>
-            <div className={styles.sectionHeading}>
-              <span>{group.label}</span><h2 id={`${group.id}-title`}>{group.title}</h2>
-            </div>
-            <p className={styles.groupDescription}>{group.description}</p>
-            {group.projects.map((project, index) => (
-            <motion.article
-              id={project.id}
-              key={project.id}
-              className={styles.project}
-              {...reveal}
-              transition={{ delay: index * .06 }}
-            >
-              <div className={styles.projectCopy}>
-                <div className={styles.projectMeta}>
-                  <span>{project.label}</span><span>{project.period}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <dl className={styles.projectFacts}>
-                  <div><dt>我的工作</dt><dd>{project.contribution}</dd></div>
-                  <div><dt>项目进展</dt><dd>{project.status}</dd></div>
-                </dl>
-                <details className={styles.methodDetails}>
-                  <summary>展开方法与实现</summary>
-                  <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-                </details>
-                {project.external && (
-                  <a href={project.href} target="_blank" rel="noreferrer" className={styles.projectLink}>
-                    {project.linkLabel || '访问 GitHub 仓库 ↗'}
-                  </a>
-                )}
-              </div>
-              <figure className={styles.projectMedia}>
-                <ResponsiveImage src={project.media.src} alt={project.media.alt} sizes="(max-width: 980px) calc(100vw - 80px), 420px" loading="lazy" />
-              </figure>
-            </motion.article>
-            ))}
-          </section>
-        ))}
+        <ProjectSection group={physicsGroup} />
 
         <section id="publications" className={styles.section} aria-labelledby="publications-title">
           <div className={styles.sectionHeading}>
-            <span>PUBLICATIONS</span><h2 id="publications-title">代表论文</h2>
+            <span>02 / PUBLICATIONS</span><h2 id="publications-title">代表论文</h2>
           </div>
           <div className={styles.publications}>
             {publications.map((publication) => (
@@ -111,7 +117,7 @@ export default function Research() {
 
         <section id="competitions" className={styles.section} aria-labelledby="competitions-title">
           <div className={styles.sectionHeading}>
-            <span>COMPETITIONS</span><h2 id="competitions-title">竞赛与奖项</h2>
+            <span>03 / COMPETITIONS</span><h2 id="competitions-title">竞赛与奖项</h2>
           </div>
           <div className={styles.awards}>
             {competitions.map((item) => (
@@ -127,9 +133,11 @@ export default function Research() {
           </div>
         </section>
 
+        <ProjectSection group={developmentGroup} />
+
         <section id="skills" className={styles.section} aria-labelledby="skills-title">
           <div className={styles.sectionHeading}>
-            <span>TOOLS & METHODS</span><h2 id="skills-title">工具与方法</h2>
+            <span>05 / TOOLS & METHODS</span><h2 id="skills-title">工具与方法</h2>
           </div>
           <div className={styles.skillGroups}>
             {skillGroups.map((group) => (
