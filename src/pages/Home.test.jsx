@@ -70,6 +70,7 @@ it('puts education, research and internships, practice, then photography after t
   expect(within(work).getByRole('link', { name: /游戏产品实习生/ })).toHaveAttribute('href', '/research#internships');
   expect(work).toHaveTextContent('深圳乐言科技有限公司');
   expect(work).toHaveTextContent('2026.10 — 2026.11');
+  expect(screen.queryByRole('img', { name: '乐言科技公司标识' })).not.toBeInTheDocument();
   expect(within(work).queryByRole('link', { name: /入展作品/ })).not.toBeInTheDocument();
   expect(within(work).queryByText('03 / PHOTOGRAPHY')).not.toBeInTheDocument();
   expect(within(screen.getByRole('region', { name: '把看见的光留下来' })).getAllByRole('img')).toHaveLength(6);

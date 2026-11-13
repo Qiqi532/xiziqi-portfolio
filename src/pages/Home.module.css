@@ -20,7 +20,6 @@
 .workCard{display:flex;flex-direction:column;min-width:0;padding:26px 25px;border:1px solid var(--color-line);color:var(--color-text);background:var(--color-paper);transition:border-color .2s,transform .2s}
 .workCard:hover{border-color:var(--color-accent);transform:translateY(-3px)}
 .workLabel{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px;font-size:.65rem;letter-spacing:.12em;color:var(--color-accent)}
-.workLogo{width:100px;height:auto;flex-shrink:0}
 .workCard h3{margin:24px 0 14px;font-size:1.55rem}
 .workCard>p{font-size:.9rem;line-height:1.85;margin-bottom:20px}
 .workCard>small{font-size:.73rem;color:var(--color-accent);margin-top:auto;line-height:1.7}

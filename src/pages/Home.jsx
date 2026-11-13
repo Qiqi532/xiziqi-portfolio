@@ -13,7 +13,7 @@ const featuredInternship = internships[0];
 const highlights = [
   { key: 'research', label: '01 / PHYSICS', title: '从光纤到星光', summary: '研究光纤传感，也从恒星光谱里寻找物理线索。', result: `${publications.length} 篇论文 · 持续推进物理研究`, href: '/research', link: '进入研究学习页' },
   { key: 'development', label: '02 / DEVELOPMENT', title: '把想法写成工具', summary: '为物理论文阅读和摄影选片，独立开发自己需要的工具。', result: 'Physics Research Intelligence · Lumina Select', href: '/research#development-projects', link: '看看独立开发项目' },
-  { key: 'internship', label: '03 / INTERNSHIP', title: featuredInternship.role, summary: featuredInternship.summary, result: `${featuredInternship.company} · ${featuredInternship.period}`, logo: featuredInternship.logo, href: '/research#internships', link: '查看实习经历' },
+  { key: 'internship', label: '03 / INTERNSHIP', title: featuredInternship.role, summary: featuredInternship.summary, result: `${featuredInternship.company} · ${featuredInternship.period}`, href: '/research#internships', link: '查看实习经历' },
 ];
 
 export default function Home() {
@@ -73,7 +73,7 @@ export default function Home() {
           <div className={styles.workGrid}>
             {highlights.map((item) => (
               <Link key={item.key} to={item.href} className={styles.workCard}>
-                <span className={styles.workLabel}>{item.label}{item.logo && <ResponsiveImage src={item.logo.src} alt={item.logo.alt} width={item.logo.width} height={item.logo.height} className={styles.workLogo} />}</span>
+                <span className={styles.workLabel}>{item.label}</span>
                 <h3>{item.title}</h3><p>{item.summary}</p>
                 <small>{item.result}</small>
                 <span className={styles.workLink}>{item.link}<span aria-hidden="true">↗</span></span>
