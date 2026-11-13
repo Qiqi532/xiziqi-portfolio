@@ -134,6 +134,28 @@ export const publications = [
   },
 ];
 
+export const internships = [
+  {
+    id: 'leyan-game-product',
+    company: '深圳乐言科技有限公司',
+    role: '游戏产品实习生',
+    period: '2026.10 — 2026.11',
+    summary: '参与游戏视听体验优化，将效果目标整理为可执行需求，打通 AI 辅助三维资产制作与 Unity 关卡设计、编辑的工作流。',
+    logo: { src: image('internships', 'leyan-technology.png'), alt: '乐言科技公司标识', width: 372, height: 151 },
+    workflow: [
+      { tool: 'Codex', task: '需求整理与视觉参考' },
+      { tool: 'Tripo', task: '生成三维模型' },
+      { tool: 'Blender · MCP', task: '模型调整' },
+      { tool: 'Unity', task: '关卡设计与编辑' },
+    ],
+    responsibilities: [
+      { title: '游戏视听体验优化', description: '把效果目标整理为可执行的需求，使用 Codex 整理需求、生成视觉参考，并验证渲染效果。' },
+      { title: '三维资产与关卡工作流', description: '使用 Tripo 生成模型，通过 MCP 在 Blender 中调整，并在 Unity 中完成关卡设计与编辑，衔接从模型生成到关卡制作的完整流程。' },
+      { title: '物理引擎适配建议', description: '结合物理背景，针对游戏提出物理引擎适配建议，探索提升交互体验与可玩性的方案。' },
+    ],
+  },
+];
+
 export const competitions = [
   {
     year: '2025', title: '全国大学生数学建模竞赛', result: '本科组广东省一等奖 · B 题“碳化硅外延层厚度的确定”',

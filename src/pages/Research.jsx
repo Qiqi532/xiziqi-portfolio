@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import ResponsiveImage from '../components/ResponsiveImage';
-import { competitions, publications, researchProjects, skillGroups } from '../data/siteContent';
+import { competitions, internships, publications, researchProjects, skillGroups } from '../data/siteContent';
 import styles from './Research.module.css';
 
 const reveal = {
@@ -28,6 +28,7 @@ const sectionLinks = [
   ['publications', '论文'],
   ['competitions', '奖项'],
   ['development-projects', '独立开发'],
+  ['internships', '实习经历'],
   ['skills', '工具'],
 ];
 
@@ -84,7 +85,7 @@ export default function Research() {
         <header className={styles.header}>
           <span>RESEARCH & LEARNING</span>
           <h1>研究学习</h1>
-          <p>从光纤传感到恒星光谱，用实验与计算探索物理，也用代码把日常问题做成可用的工具。</p>
+          <p>从光纤传感到恒星光谱，用实验与计算探索物理；在独立开发与游戏产品实习中，把需求转化为工具与体验。</p>
         </header>
 
         <nav className={styles.sectionNav} aria-label="研究学习页内导航">
@@ -135,9 +136,33 @@ export default function Research() {
 
         <ProjectSection group={developmentGroup} />
 
+        <section id="internships" className={styles.section} aria-labelledby="internships-title">
+          <div className={styles.sectionHeading}>
+            <span>05 / INTERNSHIP</span><h2 id="internships-title">实习经历</h2>
+          </div>
+          {internships.map((internship) => (
+            <article key={internship.id} className={styles.internshipCard} aria-labelledby={`${internship.id}-title`}>
+              <header className={styles.internshipHeader}>
+                <ResponsiveImage src={internship.logo.src} alt={internship.logo.alt} width={internship.logo.width} height={internship.logo.height} className={styles.internshipLogo} />
+                <div>
+                  <div className={styles.projectMeta}><span>{internship.company}</span><span>{internship.period}</span></div>
+                  <h3 id={`${internship.id}-title`}>{internship.role}</h3>
+                </div>
+              </header>
+              <p className={styles.internshipSummary}>{internship.summary}</p>
+              <ol className={styles.internshipWorkflow} aria-label="游戏产品制作工作流">
+                {internship.workflow.map((step) => <li key={step.tool}><strong>{step.tool}</strong><span>{step.task}</span></li>)}
+              </ol>
+              <dl className={styles.internshipResponsibilities}>
+                {internship.responsibilities.map((item) => <div key={item.title}><dt>{item.title}</dt><dd>{item.description}</dd></div>)}
+              </dl>
+            </article>
+          ))}
+        </section>
+
         <section id="skills" className={styles.section} aria-labelledby="skills-title">
           <div className={styles.sectionHeading}>
-            <span>05 / TOOLS & METHODS</span><h2 id="skills-title">工具与方法</h2>
+            <span>06 / TOOLS & METHODS</span><h2 id="skills-title">工具与方法</h2>
           </div>
           <div className={styles.skillGroups}>
             {skillGroups.map((group) => (

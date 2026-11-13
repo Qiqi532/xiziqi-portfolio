@@ -11,11 +11,11 @@ it('separates physics research and development with valid section links', () => 
   expect(within(screen.getByRole('region', { name: '独立开发' })).getAllByRole('article')).toHaveLength(3);
   const links = within(screen.getByRole('navigation', { name: '研究学习页内导航' })).getAllByRole('link');
   expect(screen.getAllByRole('heading', { level: 2 }).map((heading) => heading.textContent)).toEqual([
-    '物理研究', '代表论文', '竞赛与奖项', '独立开发', '工具与方法',
+    '物理研究', '代表论文', '竞赛与奖项', '独立开发', '实习经历', '工具与方法',
   ]);
-  expect(links.map((link) => link.textContent)).toEqual(['物理研究', '论文', '奖项', '独立开发', '工具']);
+  expect(links.map((link) => link.textContent)).toEqual(['物理研究', '论文', '奖项', '独立开发', '实习经历', '工具']);
   expect(links.map((link) => link.getAttribute('href'))).toEqual([
-    '#physics-projects', '#publications', '#competitions', '#development-projects', '#skills',
+    '#physics-projects', '#publications', '#competitions', '#development-projects', '#internships', '#skills',
   ]);
   links.forEach((link) => expect(document.getElementById(link.getAttribute('href').slice(1))).toBeInTheDocument());
   researchProjects.forEach((project) => {

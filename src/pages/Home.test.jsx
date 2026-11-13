@@ -59,12 +59,18 @@ it('renders an editorial homepage while preserving the detailed school records',
   expect(screen.getByRole('button', { name: '复制微信号' })).toBeInTheDocument();
 });
 
-it('puts education immediately after the introduction and before selected work, photography and practice', () => {
+it('puts education, research and internships, practice, then photography after the introduction', () => {
   render(<MemoryRouter><Home /></MemoryRouter>);
   const sections = screen.getAllByRole('region').map((section) => section.getAttribute('aria-labelledby'));
   expect(sections.slice(0, 3)).toEqual(['home-title', 'education-title', 'work-title']);
-  expect(sections.indexOf('work-title')).toBeLessThan(sections.indexOf('photography-title'));
-  expect(sections.indexOf('photography-title')).toBeLessThan(sections.indexOf('practice-title'));
-  expect(within(screen.getByRole('region', { name: '最近，在做这些事' })).getAllByRole('link')).toHaveLength(3);
+  expect(sections.indexOf('work-title')).toBeLessThan(sections.indexOf('practice-title'));
+  expect(sections.indexOf('practice-title')).toBeLessThan(sections.indexOf('photography-title'));
+  const work = screen.getByRole('region', { name: '研究与实习' });
+  expect(within(work).getAllByRole('link')).toHaveLength(3);
+  expect(within(work).getByRole('link', { name: /游戏产品实习生/ })).toHaveAttribute('href', '/research#internships');
+  expect(work).toHaveTextContent('深圳乐言科技有限公司');
+  expect(work).toHaveTextContent('2026.10 — 2026.11');
+  expect(within(work).queryByRole('link', { name: /入展作品/ })).not.toBeInTheDocument();
+  expect(within(work).queryByText('03 / PHOTOGRAPHY')).not.toBeInTheDocument();
   expect(within(screen.getByRole('region', { name: '把看见的光留下来' })).getAllByRole('img')).toHaveLength(6);
 });

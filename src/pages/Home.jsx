@@ -5,14 +5,15 @@ import HeroCarousel from '../components/HeroCarousel';
 import PhotographyCreator from '../components/PhotographyCreator';
 import ResponsiveImage from '../components/ResponsiveImage';
 import { images } from '../data/images';
-import { education, heroSlides, photography, practiceChapters, profile, publications, selectedPhotography } from '../data/siteContent';
+import { education, heroSlides, internships, photography, practiceChapters, profile, publications, selectedPhotography } from '../data/siteContent';
 import styles from './Home.module.css';
 
 const featuredPhotos = images.filter((image) => image.exhibition).slice(0, 6);
+const featuredInternship = internships[0];
 const highlights = [
   { key: 'research', label: '01 / PHYSICS', title: '从光纤到星光', summary: '研究光纤传感，也从恒星光谱里寻找物理线索。', result: `${publications.length} 篇论文 · 持续推进物理研究`, href: '/research', link: '进入研究学习页' },
   { key: 'development', label: '02 / DEVELOPMENT', title: '把想法写成工具', summary: '为物理论文阅读和摄影选片，独立开发自己需要的工具。', result: 'Physics Research Intelligence · Lumina Select', href: '/research#development-projects', link: '看看独立开发项目' },
-  { key: 'photography', label: '03 / PHOTOGRAPHY', title: '在镜头里记录光', summary: '拍校园、城市与人，收下日常和旅途中值得停留的片刻。', result: '珠港澳大学生摄影展 · 特别推荐', href: '/portfolio?category=exhibition', link: '浏览近期入展作品' },
+  { key: 'internship', label: '03 / INTERNSHIP', title: featuredInternship.role, summary: featuredInternship.summary, result: `${featuredInternship.company} · ${featuredInternship.period}`, logo: featuredInternship.logo, href: '/research#internships', link: '查看实习经历' },
 ];
 
 export default function Home() {
@@ -68,11 +69,11 @@ export default function Home() {
 
       <section className={styles.workSection} aria-labelledby="work-title">
         <div className="container">
-          <header className={styles.sectionHeader}><span>02 / SELECTED WORK</span><h2 id="work-title">最近，在做这些事</h2><p>研究、创作与记录，是我认识世界的几种方式。</p></header>
+          <header className={styles.sectionHeader}><span>02 / RESEARCH & EXPERIENCE</span><h2 id="work-title">研究与实习</h2><p>在物理研究、独立开发与产品实习中，把问题拆解成具体的工作。</p></header>
           <div className={styles.workGrid}>
             {highlights.map((item) => (
               <Link key={item.key} to={item.href} className={styles.workCard}>
-                <span className={styles.workLabel}>{item.label}</span>
+                <span className={styles.workLabel}>{item.label}{item.logo && <ResponsiveImage src={item.logo.src} alt={item.logo.alt} width={item.logo.width} height={item.logo.height} className={styles.workLogo} />}</span>
                 <h3>{item.title}</h3><p>{item.summary}</p>
                 <small>{item.result}</small>
                 <span className={styles.workLink}>{item.link}<span aria-hidden="true">↗</span></span>
@@ -82,9 +83,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section className={`${styles.section} ${styles.muted}`} aria-labelledby="practice-title">
+        <div className="container">
+          <header className={styles.sectionHeader}><span>03 / PRACTICE</span><h2 id="practice-title">在真实现场，做具体的事</h2><p>在校园媒体、志愿服务与社会实践中，把想法变成行动。</p></header>
+          <div className={styles.practiceGrid}>{practiceChapters.map((item) => (
+            <article key={item.label}>
+              <span>{item.label}</span>
+              <h3>{(item.titleLines || [item.title]).map((line, index) => <Fragment key={line}>{index > 0 ? <br /> : null}{line}</Fragment>)}</h3>
+              <p>{item.summary}</p>
+            </article>
+          ))}</div>
+          <Link className={styles.sectionLink} to="/practice">进入个人实践页 <span aria-hidden="true">→</span></Link>
+        </div>
+      </section>
+
       <section className={styles.section} aria-labelledby="photography-title">
         <div className="container">
-          <header className={styles.sectionHeader}><span>03 / PHOTOGRAPHY</span><h2 id="photography-title">把看见的光留下来</h2><p>校园里的清晨，海岸边的风，以及城市中一闪而过的片刻。</p></header>
+          <header className={styles.sectionHeader}><span>04 / PHOTOGRAPHY</span><h2 id="photography-title">把看见的光留下来</h2><p>校园里的清晨，海岸边的风，以及城市中一闪而过的片刻。</p></header>
           <div className={styles.photoHeading}><p>{photography.lead}</p><Link to="/portfolio?category=exhibition">入展作品 · 特别推荐 <span aria-hidden="true">↗</span></Link></div>
           <div className={styles.photoGrid}>
             {featuredPhotos.map((photo) => (
@@ -98,20 +113,6 @@ export default function Home() {
           <PhotographyCreator creator={photography.creator} />
           <details className={styles.photoTools}><summary>摄影设备与后期工具</summary><p>{photography.equipment.join(' · ')}</p><p>{photography.postTools.join(' · ')}</p></details>
           <Link className={styles.sectionLink} to="/portfolio">浏览全部摄影作品 <span aria-hidden="true">→</span></Link>
-        </div>
-      </section>
-
-      <section className={`${styles.section} ${styles.muted}`} aria-labelledby="practice-title">
-        <div className="container">
-          <header className={styles.sectionHeader}><span>04 / PRACTICE</span><h2 id="practice-title">在真实现场，做具体的事</h2><p>在校园媒体、志愿服务与社会实践中，把想法变成行动。</p></header>
-          <div className={styles.practiceGrid}>{practiceChapters.map((item) => (
-            <article key={item.label}>
-              <span>{item.label}</span>
-              <h3>{(item.titleLines || [item.title]).map((line, index) => <Fragment key={line}>{index > 0 ? <br /> : null}{line}</Fragment>)}</h3>
-              <p>{item.summary}</p>
-            </article>
-          ))}</div>
-          <Link className={styles.sectionLink} to="/practice">进入个人实践页 <span aria-hidden="true">→</span></Link>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Research from './Research';
 
@@ -24,4 +24,20 @@ it('renders the interactive Tesla demo record with its own link label', () => {
   expect(demoLink).toHaveAttribute('target', '_blank');
 
   expect(screen.getAllByRole('link', { name: '访问 GitHub 仓库 ↗' })).toHaveLength(2);
+});
+
+it('shows the internship workflow and distinguishes the physics engine proposal from completed work', () => {
+  render(<MemoryRouter><Research /></MemoryRouter>);
+  const internship = screen.getByRole('region', { name: '实习经历' });
+  expect(internship).toHaveAttribute('id', 'internships');
+  expect(internship).toHaveTextContent('深圳乐言科技有限公司');
+  expect(internship).toHaveTextContent('游戏产品实习生');
+  expect(internship).toHaveTextContent('2026.10 — 2026.11');
+  const workflow = within(internship).getByRole('list', { name: '游戏产品制作工作流' });
+  expect(within(workflow).getAllByRole('listitem').map((item) => item.querySelector('strong').textContent)).toEqual([
+    'Codex', 'Tripo', 'Blender · MCP', 'Unity',
+  ]);
+  expect(internship).toHaveTextContent('生成视觉参考，并验证渲染效果');
+  expect(internship).toHaveTextContent('提出物理引擎适配建议');
+  expect(within(internship).getByRole('img', { name: '乐言科技公司标识' })).toHaveAttribute('src', '/images/internships/leyan-technology.png');
 });
